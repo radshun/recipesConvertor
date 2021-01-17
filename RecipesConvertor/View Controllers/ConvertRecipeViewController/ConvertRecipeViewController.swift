@@ -140,9 +140,13 @@ class ConvertRecipeViewController: BaseViewController {
     
     @IBAction func onSavePressed(_ sender: UIButton) {
         self.recipe?.numOfOutcomes = self.numOfOutcomes
-        self.recipe?.name = "ניסיון עוגיות"
-        self.recipe?.save()
-        self.navigationController?.popToRootViewController(animated: true)
+        self.showAddRecipeDetailsAlert { (name, image) in
+            guard let name = name else { return }
+            self.recipe?.name = name
+            self.recipe?.image = CodableImage(image: image)
+            self.recipe?.save()
+            self.navigationController?.popToRootViewController(animated: true)
+        }
     }
     
     @IBAction func onBackPressed(_ sender: UIButton) {

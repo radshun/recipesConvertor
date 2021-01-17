@@ -25,6 +25,7 @@ public class RecipeCoreData: NSManagedObject {
         self.name = recipe.name ?? ""
         self.ingredient = try? JSONEncoder().encode(recipe.ingredients)
         self.numOfOutcomes = Int32(recipe.numOfOutcomes ?? 0)
+        self.image = try? JSONEncoder().encode(recipe.name)
     }
     
     public class func fetch() -> NSFetchRequest<RecipeCoreData> {
@@ -38,11 +39,16 @@ public class RecipeCoreData: NSManagedObject {
         case name = "name"
         case ingredient = "ingredient"
         case numOfOutcomes = "numOfOutcomes"
+        case image = "image"
     }
     
     func asRecipe() -> Recipe? {
         guard let ingredient = self.ingredient else { return nil }
         let ingredients = (try? JSONDecoder().decode([Ingredient].self, from: ingredient)) ?? []
-        return Recipe(id: Int(self.id), name: self.name, ingredients: ingredients, numOfOutcomes: Int(self.numOfOutcomes))
+        var recipe = Recipe(id: Int(self.id), name: self.name, ingredients: ingredients, numOfOutcomes: Int(self.numOfOutcomes))
+        if let imageData = self.image, let image = (try? JSONDecoder().decode(CodableImage.self, from: imageData)) {
+            recipe.image = image
+        }
+        return recipe
     }
 }

@@ -7,6 +7,8 @@
 
 import UIKit
 
+typealias GlassSizeAlertCompletionHandler = ((_ isChanged: Bool) -> ())
+
 class GlassSizeAlertViewController: BaseViewController {
     
     @IBOutlet weak var mediumGlassImageView: UIImageView!
@@ -17,8 +19,7 @@ class GlassSizeAlertViewController: BaseViewController {
     
     private var initialGlassType: GlassSize = SessionManager.shared.glassType
     private var glassType: GlassSize = SessionManager.shared.glassType
-    typealias CompletionHandler = ((_ isChanged: Bool) -> ())
-    var completion: CompletionHandler?
+    var completion: GlassSizeAlertCompletionHandler?
     
     override func viewDidLoad() {
         super.viewDidLoad()

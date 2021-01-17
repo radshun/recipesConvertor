@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A60EBABD25AED8FF00E7E591 /* BaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60EBABC25AED8FF00E7E591 /* BaseApi.swift */; };
+		A656157925B4B1FB001F6143 /* CodableImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A656157825B4B1FB001F6143 /* CodableImage.swift */; };
 		A65DCB9925AF0EEA00F87272 /* GeneralDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65DCB9825AF0EEA00F87272 /* GeneralDetails.swift */; };
 		A65DCB9D25AF0F1500F87272 /* GeneralService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65DCB9C25AF0F1500F87272 /* GeneralService.swift */; };
 		A65DCBA625AF1F3500F87272 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A65DCBA525AF1F3400F87272 /* GoogleService-Info.plist */; };
@@ -26,6 +27,7 @@
 		A6AEC47E25B4451C00FE17BC /* Recipe+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC47C25B4451C00FE17BC /* Recipe+CoreDataProperties.swift */; };
 		A6AEC48125B448A800FE17BC /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC48025B448A800FE17BC /* Recipe.swift */; };
 		A6AEC48525B464BF00FE17BC /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC48425B464BF00FE17BC /* Alertable.swift */; };
+		A6AEC49625B4A98300FE17BC /* AddRecipeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AEC49525B4A98300FE17BC /* AddRecipeDetailsViewController.swift */; };
 		A6B3054525AE13FD00AA499B /* Convertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B3054425AE13FD00AA499B /* Convertable.swift */; };
 		A6B3054925AE14B600AA499B /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B3054825AE14B600AA499B /* SessionManager.swift */; };
 		A6B9066725A59BFE00C229DB /* ConvertRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B9066625A59BFE00C229DB /* ConvertRecipeViewController.swift */; };
@@ -58,6 +60,7 @@
 /* Begin PBXFileReference section */
 		14351CB0746429A6012DEEC9 /* Pods_RecipesConvertor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecipesConvertor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A60EBABC25AED8FF00E7E591 /* BaseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApi.swift; sourceTree = "<group>"; };
+		A656157825B4B1FB001F6143 /* CodableImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableImage.swift; sourceTree = "<group>"; };
 		A65DCB9825AF0EEA00F87272 /* GeneralDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralDetails.swift; sourceTree = "<group>"; };
 		A65DCB9C25AF0F1500F87272 /* GeneralService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralService.swift; sourceTree = "<group>"; };
 		A65DCBA525AF1F3400F87272 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -76,6 +79,7 @@
 		A6AEC47C25B4451C00FE17BC /* Recipe+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A6AEC48025B448A800FE17BC /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		A6AEC48425B464BF00FE17BC /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
+		A6AEC49525B4A98300FE17BC /* AddRecipeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeDetailsViewController.swift; sourceTree = "<group>"; };
 		A6B3054425AE13FD00AA499B /* Convertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convertable.swift; sourceTree = "<group>"; };
 		A6B3054825AE14B600AA499B /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		A6B9066625A59BFE00C229DB /* ConvertRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertRecipeViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +186,23 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
+		A6AEC49325B4A95E00FE17BC /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				A6AEC49825B4A99500FE17BC /* AddRecipeDetailsViewController */,
+				A6AEC45F25B4128600FE17BC /* GlassSizeAlertViewController */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
+		A6AEC49825B4A99500FE17BC /* AddRecipeDetailsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A6AEC49525B4A98300FE17BC /* AddRecipeDetailsViewController.swift */,
+			);
+			path = AddRecipeDetailsViewController;
+			sourceTree = "<group>";
+		};
 		A6B3053A25ADD0D100AA499B /* StoryBoards */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,7 +215,7 @@
 		A6B9066D25A59D2C00C229DB /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A6AEC45F25B4128600FE17BC /* GlassSizeAlertViewController */,
+				A6AEC49325B4A95E00FE17BC /* Alerts */,
 				A6B9067025A59D5E00C229DB /* ConvertRecipeViewController */,
 				A6B9067125A59D6A00C229DB /* AddRecipeViewController */,
 				A6B9066F25A59D4300C229DB /* RecipiesViewController */,
@@ -352,6 +373,7 @@
 				A6B9068825A7168800C229DB /* Colors.swift */,
 				A6B9069725A7675E00C229DB /* Extensions.swift */,
 				A69E538925AB236C00ED9E8B /* NSMutableAttributedString.swift */,
+				A656157825B4B1FB001F6143 /* CodableImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -520,6 +542,8 @@
 				A6D4125C25A23784006C8E95 /* SceneDelegate.swift in Sources */,
 				A6B9067625A59DB900C229DB /* RecipieCell.swift in Sources */,
 				A69E538725AB13F000ED9E8B /* Number.swift in Sources */,
+				A6AEC49625B4A98300FE17BC /* AddRecipeDetailsViewController.swift in Sources */,
+				A656157925B4B1FB001F6143 /* CodableImage.swift in Sources */,
 				A6D25B5625AEE92800C9F38F /* GeneralApi.swift in Sources */,
 				A6AEC48125B448A800FE17BC /* Recipe.swift in Sources */,
 				A65DCB9D25AF0F1500F87272 /* GeneralService.swift in Sources */,

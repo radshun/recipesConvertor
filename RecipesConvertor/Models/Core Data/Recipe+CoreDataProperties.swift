@@ -20,4 +20,5 @@ extension RecipeCoreData {
     @NSManaged public var numOfOutcomes: Int32
     @NSManaged public var id: Int32
     @NSManaged public var name: String
+    @NSManaged public var image: Data?
 }

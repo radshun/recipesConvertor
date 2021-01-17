@@ -10,7 +10,8 @@ import Foundation
 protocol Routable {
     func showAddRecipe(with recipe: Recipe?)
     func showConvertRecipe(with recipe: Recipe)
-    func showGlassSizeAlert(completion: GlassSizeAlertViewController.CompletionHandler?)
+    func showGlassSizeAlert(completion: GlassSizeAlertCompletionHandler?)
+    func showAddRecipeDetailsAlert(completion: AddRecipeDetailsCompletionHandler?)
 }
 
 extension BaseViewController: Routable {
@@ -29,10 +30,17 @@ extension BaseViewController: Routable {
         self.show(convertRecipeViewController, sender: nil)
     }
     
-    func showGlassSizeAlert(completion: GlassSizeAlertViewController.CompletionHandler?) {
+    func showGlassSizeAlert(completion: GlassSizeAlertCompletionHandler?) {
         let glassSizeAlertViewController = GlassSizeAlertViewController.instantiateFrom(storyboard: .main)
         glassSizeAlertViewController.completion = completion
         glassSizeAlertViewController.modalPresentationStyle = .overCurrentContext
         self.present(glassSizeAlertViewController, animated: true)
+    }
+    
+    func showAddRecipeDetailsAlert(completion: AddRecipeDetailsCompletionHandler?) {
+        let addRecipeDetailsViewController = AddRecipeDetailsViewController.instantiateFrom(storyboard: .main)
+        addRecipeDetailsViewController.completion = completion
+        addRecipeDetailsViewController.modalPresentationStyle = .overCurrentContext
+        self.present(addRecipeDetailsViewController, animated: true)
     }
 }

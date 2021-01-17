@@ -96,7 +96,7 @@ extension AddRecipeViewController {
     
     private func proceedToConvertRecipe() {
         if SessionManager.shared.generalDetails != nil || SessionManager.shared.isConvertionEnabled == false {
-            self.showConvertRecipe(with: Recipe(id: self.recipe?.id, ingredients: self.ingredients.map{ $0.ingredient }))
+            self.showConvertRecipe()
         } else {
             self.waitForResponse()
         }
@@ -110,7 +110,7 @@ extension AddRecipeViewController {
     @objc func checkIfDataRecieved() {
         if SessionManager.shared.isConvertionEnabled != nil {
             timer?.invalidate()
-            self.showConvertRecipe(with: Recipe(id: self.recipe?.id,ingredients: self.ingredients.map{ $0.ingredient }))
+            self.showConvertRecipe()
         }
     }
     
@@ -132,6 +132,15 @@ extension AddRecipeViewController {
                 }
             }
         }
+    }
+    
+    private func showConvertRecipe() {
+        if self.recipe != nil {
+            self.recipe?.ingredients = self.ingredients.map{ $0.ingredient }
+        } else {
+            self.recipe = Recipe(ingredients: self.ingredients.map{ $0.ingredient })
+        }
+        self.showConvertRecipe(with: self.recipe!)
     }
 }
 
