@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwiftGifOrigin
 
 class RecipiesViewController: BaseViewController {
 
@@ -83,5 +82,13 @@ extension RecipiesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "מחיקה"
+    }
+}
+
+extension RecipiesViewController {
+    private func search(_ text: String?) {
+        guard let text = text else { return }
+        self.recipies = self.recipies.filter{ $0.name?.contains(text) ?? false }
+        self.tableView.reloadData()
     }
 }

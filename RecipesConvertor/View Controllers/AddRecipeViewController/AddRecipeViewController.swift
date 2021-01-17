@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftGifOrigin
 
 class AddRecipeViewController: BaseViewController {
     

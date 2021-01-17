@@ -172,6 +172,16 @@
 			path = "Core Data";
 			sourceTree = "<group>";
 		};
+		A6AEC48F25B4748B00FE17BC /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				A6D4125925A23784006C8E95 /* AppDelegate.swift */,
+				A6D4125B25A23784006C8E95 /* SceneDelegate.swift */,
+				A6D4126525A23786006C8E95 /* Assets.xcassets */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
 		A6B3053A25ADD0D100AA499B /* StoryBoards */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,9 +336,7 @@
 				A6D4129225A23E29006C8E95 /* CustomViews */,
 				A6B9067E25A617B700C229DB /* Managers */,
 				A6D4127125A2388C006C8E95 /* Extensions */,
-				A6D4125925A23784006C8E95 /* AppDelegate.swift */,
-				A6D4125B25A23784006C8E95 /* SceneDelegate.swift */,
-				A6D4126525A23786006C8E95 /* Assets.xcassets */,
+				A6AEC48F25B4748B00FE17BC /* Application */,
 				A65DCBA525AF1F3400F87272 /* GoogleService-Info.plist */,
 				A6D4126A25A23786006C8E95 /* Info.plist */,
 				A6D4126225A23784006C8E95 /* RecipesConvertor.xcdatamodeld */,
