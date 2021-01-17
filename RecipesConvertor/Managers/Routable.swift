@@ -11,7 +11,7 @@ protocol Routable {
     func showAddRecipe(with recipe: Recipe?)
     func showConvertRecipe(with recipe: Recipe)
     func showGlassSizeAlert(completion: GlassSizeAlertCompletionHandler?)
-    func showAddRecipeDetailsAlert(completion: AddRecipeDetailsCompletionHandler?)
+    func showAddRecipeDetailsAlert(with name: String?, completion: AddRecipeDetailsCompletionHandler?)
 }
 
 extension BaseViewController: Routable {
@@ -37,8 +37,9 @@ extension BaseViewController: Routable {
         self.present(glassSizeAlertViewController, animated: true)
     }
     
-    func showAddRecipeDetailsAlert(completion: AddRecipeDetailsCompletionHandler?) {
+    func showAddRecipeDetailsAlert(with name: String? = nil, completion: AddRecipeDetailsCompletionHandler?) {
         let addRecipeDetailsViewController = AddRecipeDetailsViewController.instantiateFrom(storyboard: .main)
+        addRecipeDetailsViewController.name = name
         addRecipeDetailsViewController.completion = completion
         addRecipeDetailsViewController.modalPresentationStyle = .overCurrentContext
         self.present(addRecipeDetailsViewController, animated: true)

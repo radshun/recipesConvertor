@@ -140,10 +140,10 @@ class ConvertRecipeViewController: BaseViewController {
     
     @IBAction func onSavePressed(_ sender: UIButton) {
         self.recipe?.numOfOutcomes = self.numOfOutcomes
-        self.showAddRecipeDetailsAlert { (name, image) in
+        self.showAddRecipeDetailsAlert(with: self.recipe?.name) { (name, image) in
             guard let name = name else { return }
             self.recipe?.name = name
-            self.recipe?.image = CodableImage(image: image)
+            self.recipe?.image = image
             self.recipe?.save()
             self.navigationController?.popToRootViewController(animated: true)
         }

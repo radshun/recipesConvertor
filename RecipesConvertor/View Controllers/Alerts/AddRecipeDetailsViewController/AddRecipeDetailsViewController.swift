@@ -18,11 +18,17 @@ class AddRecipeDetailsViewController: BaseViewController {
     @IBOutlet weak var completeButton: UIButton!
     
     var completion: AddRecipeDetailsCompletionHandler?
+    var name: String?
     private var recipeImage: UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.setupUI()
+    }
+    
+    private func setupUI() {
+        self.recipeNameTextField.text = self.name
         self.recipeNameTextField.addTarget(self, action: #selector(recipeNameWasChanged), for: .editingChanged)
     }
 
@@ -39,6 +45,7 @@ class AddRecipeDetailsViewController: BaseViewController {
     
     @objc func recipeNameWasChanged(_ sender: UITextField) {
         self.completeButton.isEnabled = !(sender.text?.isEmpty ?? true)
+        self.name = sender.text
     }
     
     @IBAction func onAddImage(_ sender: UIButton) {
@@ -47,7 +54,7 @@ class AddRecipeDetailsViewController: BaseViewController {
     
     @IBAction func onComplete(_ sender: UIButton) {
         self.dismiss(animated: true) {
-            self.completion?(self.recipeNameTextField.text, self.recipeImage)
+            self.completion?(self.name, self.recipeImage)
         }
     }
     

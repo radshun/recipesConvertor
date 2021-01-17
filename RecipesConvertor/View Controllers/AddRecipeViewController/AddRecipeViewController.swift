@@ -14,6 +14,7 @@ class AddRecipeViewController: BaseViewController {
     @IBOutlet weak var continueView: UIView!
     @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var continueImageView: UIImageView!
+    @IBOutlet weak var navigationTitleLabel: UILabel!
     
     var recipe: Recipe?
     private var ingredients: [IngredientCellModel] = []
@@ -33,6 +34,7 @@ class AddRecipeViewController: BaseViewController {
     
     func setupUI() {
         self.tableView.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
+        self.navigationTitleLabel.text = self.recipe?.name ?? "יש להזין מתכון"
     }
     
     @IBAction func onAddRow(_ sender: UIButton) {

@@ -204,8 +204,8 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="יש להזין מתכון" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hC7-k7-aTl">
-                                        <rect key="frame" x="113.5" y="64" width="187" height="38.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="יש להזין מתכון" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hC7-k7-aTl">
+                                        <rect key="frame" x="113.5" y="52" width="187" height="66.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -226,14 +226,13 @@
                                 <constraints>
                                     <constraint firstItem="UDC-OD-ndv" firstAttribute="top" secondItem="wfH-mM-E6I" secondAttribute="top" constant="-16" id="0Vo-7f-7qE"/>
                                     <constraint firstItem="UDC-OD-ndv" firstAttribute="leading" secondItem="wfH-mM-E6I" secondAttribute="leading" id="205-ps-S8c"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hC7-k7-aTl" secondAttribute="trailing" constant="32" id="584-SB-F08"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hC7-k7-aTl" secondAttribute="trailing" constant="28" id="584-SB-F08"/>
                                     <constraint firstItem="hC7-k7-aTl" firstAttribute="centerX" secondItem="wfH-mM-E6I" secondAttribute="centerX" id="Fzr-vJ-QA5"/>
                                     <constraint firstAttribute="trailing" secondItem="0pI-E0-Hlf" secondAttribute="trailing" constant="20" id="NqS-ac-eAa"/>
-                                    <constraint firstItem="hC7-k7-aTl" firstAttribute="top" relation="greaterThanOrEqual" secondItem="wfH-mM-E6I" secondAttribute="top" constant="32" id="gSj-XQ-AHH"/>
                                     <constraint firstAttribute="bottom" secondItem="UDC-OD-ndv" secondAttribute="bottom" id="hgP-UP-eGh"/>
                                     <constraint firstAttribute="trailing" secondItem="UDC-OD-ndv" secondAttribute="trailing" id="lyB-K4-TPH"/>
-                                    <constraint firstAttribute="bottom" secondItem="hC7-k7-aTl" secondAttribute="bottom" constant="32" id="uhf-fa-EpW"/>
-                                    <constraint firstItem="hC7-k7-aTl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wfH-mM-E6I" secondAttribute="leading" constant="32" id="ynX-le-1JD"/>
+                                    <constraint firstAttribute="bottom" secondItem="hC7-k7-aTl" secondAttribute="bottom" constant="16" id="uhf-fa-EpW"/>
+                                    <constraint firstItem="hC7-k7-aTl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wfH-mM-E6I" secondAttribute="leading" constant="28" id="ynX-le-1JD"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v6W-wr-q6s">
@@ -953,6 +952,7 @@
                             <constraint firstItem="wfH-mM-E6I" firstAttribute="top" secondItem="JQb-zt-zVb" secondAttribute="top" id="BEF-qg-RNT"/>
                             <constraint firstItem="U70-uL-0gv" firstAttribute="trailing" secondItem="ZXG-dR-CJl" secondAttribute="trailing" constant="24" id="Enh-7L-vi0"/>
                             <constraint firstItem="ZXG-dR-CJl" firstAttribute="top" secondItem="v6W-wr-q6s" secondAttribute="bottom" constant="8" id="QxK-4N-b76"/>
+                            <constraint firstItem="hC7-k7-aTl" firstAttribute="top" secondItem="U70-uL-0gv" secondAttribute="top" constant="8" id="SVZ-0J-fjB"/>
                             <constraint firstItem="PHd-fx-Oal" firstAttribute="leading" secondItem="U70-uL-0gv" secondAttribute="leading" id="Tp5-Nc-ee6"/>
                             <constraint firstItem="0pI-E0-Hlf" firstAttribute="top" secondItem="U70-uL-0gv" secondAttribute="top" constant="8" id="a0k-VB-Ves"/>
                             <constraint firstItem="U70-uL-0gv" firstAttribute="trailing" secondItem="wfH-mM-E6I" secondAttribute="trailing" id="bqj-OH-UyP"/>
@@ -969,6 +969,7 @@
                         <outlet property="continueImageView" destination="894-zn-aGu" id="ovt-if-rMr"/>
                         <outlet property="continueView" destination="F4b-IK-Dyf" id="vzQ-GI-EGv"/>
                         <outlet property="errorView" destination="qXU-qn-JuW" id="FrK-C5-gIv"/>
+                        <outlet property="navigationTitleLabel" destination="hC7-k7-aTl" id="962-to-SHy"/>
                         <outlet property="tableView" destination="v6W-wr-q6s" id="yRo-rF-TyV"/>
                     </connections>
                 </viewController>

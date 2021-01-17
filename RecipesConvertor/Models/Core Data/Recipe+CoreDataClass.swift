@@ -46,8 +46,8 @@ public class RecipeCoreData: NSManagedObject {
         guard let ingredient = self.ingredient else { return nil }
         let ingredients = (try? JSONDecoder().decode([Ingredient].self, from: ingredient)) ?? []
         var recipe = Recipe(id: Int(self.id), name: self.name, ingredients: ingredients, numOfOutcomes: Int(self.numOfOutcomes))
-        if let imageData = self.image, let image = (try? JSONDecoder().decode(CodableImage.self, from: imageData)) {
-            recipe.image = image
+        if let imageData = self.image, let codableImage = (try? JSONDecoder().decode(CodableImage.self, from: imageData)) {
+            recipe.image = codableImage.image
         }
         return recipe
     }
