@@ -117,7 +117,7 @@ enum UnitType: Int, Codable ,CaseIterable {
     }
     
     func description(for amount: Double? = nil) -> String {
-        amount ?? 0 < 1 ? self.single : self.many
+        amount ?? 0 <= 1 ? self.single : self.many
     }
     
     func convertGlassRatio(from ratio: Double) -> Double {
