@@ -16,6 +16,7 @@ class ConvertRecipeViewController: BaseViewController {
     @IBOutlet weak var convertView: UIView!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var convertViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var changeGlassButton: UIButton!
     
     var ingredients: [Ingredient] = []
     private var multiplier: Double = 1
@@ -58,6 +59,7 @@ class ConvertRecipeViewController: BaseViewController {
         self.slider.setThumbImage(UIImage(named: "slider"), for: .selected)
         self.slider.isEnabled = false
         self.convertedNumberTextField.isEnabled = false
+        self.changeGlassButton.isHidden = !(self.ingredients.contains{ $0.isConvetable() } && SessionManager.shared.isConvertionEnabled ?? false)
         self.sliderBackgroundView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width / 2, height: self.view.frame.height)
         self.view.addSubview(self.sliderBackgroundView)
         self.view.sendSubviewToBack(self.sliderBackgroundView)
@@ -117,6 +119,14 @@ class ConvertRecipeViewController: BaseViewController {
         self.slider.maximumValue = number * 2
         self.slider.value = number
         self.sliderWasDragged(self.slider)
+    }
+    
+    @IBAction func onChangeGlassSize(_ sender: UIButton) {
+        self.showGlassSizeAlert { isChanged in
+            if isChanged {
+                self.tableView.reloadData()
+            }
+        }
     }
     
     @IBAction func onBackPressed(_ sender: UIButton) {

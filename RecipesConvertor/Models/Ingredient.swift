@@ -15,4 +15,9 @@ struct Ingredient {
     func isValid() -> Bool {
         self.amount?.isValid() ?? false && self.unit != nil && !(self.name?.isEmpty ?? true)
     }
+    
+    func isConvetable() -> Bool {
+        guard let name = self.name, let unit = self.unit else { return false }
+        return SessionManager.shared.isConvertableExist(name) && unit.isConvertable
+    }
 }

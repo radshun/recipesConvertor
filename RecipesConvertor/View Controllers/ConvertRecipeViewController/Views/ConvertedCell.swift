@@ -42,6 +42,7 @@ class ConvertedCell: UITableViewCell {
     
     var ingredient: Ingredient?
     var convertionType: ConvertionType = .glass
+    var multiplier: Double = 1
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -54,6 +55,7 @@ class ConvertedCell: UITableViewCell {
     
     func configure(with ingredient: Ingredient, multiplier: Double = 1) {
         self.ingredient = ingredient
+        self.multiplier = multiplier
         
         let convertable = SessionManager.shared.getConvertableIfExist(ingredient.name)
         
@@ -63,7 +65,7 @@ class ConvertedCell: UITableViewCell {
         let multiplied = ingredient.amount?.multiple(by: multiplier)
         self.afterUnitLabel.text = ingredient.unit?.description(for: multiplied?.asDecimal().number)
         self.afterAmountLabel.attributedText = multiplier == 0 ? NSAttributedString(string: "0") : multiplied?.asAttributedString()
-        self.flipButtonView.isHidden = !(ingredient.unit?.isConvertable ?? false || SessionManager.shared.isConvertionEnabled ?? false)
+        self.flipButtonView.isHidden = !(ingredient.isConvetable() && SessionManager.shared.isConvertionEnabled ?? false)
         
         self.flippedProductNameLabel.text = ingredient.name
         self.flippedBeforeUnitLabel.text = ingredient.unit?.description(for: multiplied?.asDecimal().number)
@@ -72,11 +74,21 @@ class ConvertedCell: UITableViewCell {
             let flippedMultiplied = convertionType == .glass ? ingredient.unit?.convertGlassRatio(from: ratio) : ingredient.unit?.convertMililiterRatio(from: ratio)
             let flippedConvertedAmount = ((flippedMultiplied ?? 0) * (multiplied?.asDecimal().number ?? 0))
             self.flippedAfterUnitLabel.text = self.convertionType.description(for: flippedConvertedAmount)
-            self.flippedAfterAmountLabel.attributedText = flippedConvertedAmount == 0 ? NSAttributedString(string: "0") : flippedConvertedAmount.asFraction().asAttributedString()
+            self.flippedAfterAmountLabel.attributedText = flippedConvertedAmount == 0 ? NSAttributedString(string: "0") : Decimal(number: flippedConvertedAmount).asFractionBest().asAttributedString()
         } else {
             self.flippedAfterUnitLabel.text = ingredient.unit?.description(for: multiplied?.asDecimal().number)
         }
         self.flippedDisclaimerLabel.text = "*המידות מחושבות לפי כוס של \(SessionManager.shared.glassType.rawValue) מיליליטר\n**תיתכן סטייה קלה במידות"
+    }
+    
+    @IBAction func onSwitchConvertionType(_ sender: UIButton) {
+        switch self.convertionType {
+        case .glass:
+            self.convertionType = .mililiter
+        case .mililiter:
+            self.convertionType = .glass
+        }
+        self.setupflippedAfterData()
     }
     
     @IBAction func onConvertPressed(_ sender: UIButton) {
@@ -93,5 +105,21 @@ class ConvertedCell: UITableViewCell {
             self.flippedView.isHidden = true
         }
         UIView.transition(with: self.contentView, duration: 0.4, options: .transitionFlipFromLeft, animations: nil)
+    }
+    
+    private func setupflippedAfterData() {
+        
+        guard let ingredient = self.ingredient else { return }
+        let multiplied = ingredient.amount?.multiple(by: self.multiplier)
+        let convertable = SessionManager.shared.getConvertableIfExist(ingredient.name)
+        
+        if let ratio = convertable?.ratio {
+            let flippedMultiplied = convertionType == .glass ? ingredient.unit?.convertGlassRatio(from: ratio) : ingredient.unit?.convertMililiterRatio(from: ratio)
+            let flippedConvertedAmount = ((flippedMultiplied ?? 0) * (multiplied?.asDecimal().number ?? 0))
+            self.flippedAfterUnitLabel.text = self.convertionType.description(for: flippedConvertedAmount)
+            self.flippedAfterAmountLabel.attributedText = flippedConvertedAmount == 0 ? NSAttributedString(string: "0") : flippedConvertedAmount.asFraction().asAttributedString()
+        } else {
+            self.flippedAfterUnitLabel.text = ingredient.unit?.description(for: multiplied?.asDecimal().number)
+        }
     }
 }

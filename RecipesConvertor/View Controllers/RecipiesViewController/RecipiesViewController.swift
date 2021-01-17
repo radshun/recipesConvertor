@@ -50,12 +50,3 @@ extension RecipiesViewController: UITableViewDataSource, UITableViewDelegate {
         self.showAddRecipe(with: recipies[indexPath.row])
     }
 }
-
-//MARK: Navigation
-extension RecipiesViewController {
-    private func showAddRecipe(with recipe: String? = nil) {
-        let addRecipeViewController = AddRecipeViewController.instantiateFrom(storyboard: .main)
-        addRecipeViewController.modalPresentationStyle = .fullScreen
-        self.show(addRecipeViewController, sender: nil)
-    }
-}

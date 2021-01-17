@@ -18,7 +18,6 @@ import UIKit
     @IBOutlet weak var bluredVisualView: UIVisualEffectView!
     
     private lazy var gradientLayer = CAGradientLayer()
-//    private lazy var innerShadowLayer = InnerShadowLayer(forView: self)
     private var isHorizontal = false
     
     // MARK: - Borders/Corners
@@ -26,6 +25,15 @@ import UIKit
     @IBInspectable var cornersRadius: CGFloat = 0.0 {
         didSet {
             self.backgroundView.layer.cornerRadius = self.cornersRadius
+        }
+    }
+    
+    @IBInspectable var bottomCornersRadius: CGFloat = 0.0 {
+        didSet {
+            let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: [.bottomRight, .bottomLeft], cornerRadii: CGSize(width: self.bottomCornersRadius, height: self.bottomCornersRadius))
+            let mask = CAShapeLayer()
+            mask.path = path.cgPath
+            self.backgroundView.layer.mask = mask
         }
     }
     
@@ -43,12 +51,6 @@ import UIKit
             self.backgroundView.clipsToBounds = true
         }
     }
-    
-//    @IBInspectable var innerBackgroundColor: UIColor? {
-//        didSet {
-//            self.innerShadowLayer.backgroundColor = innerBackgroundColor?.cgColor
-//        }
-//    }
     
     @IBInspectable var fillColor: UIColor = UIColor.clear {
         didSet {
@@ -76,16 +78,6 @@ import UIKit
             self.setGradient(topGradientColor: topGradientColor, bottomGradientColor: bottomGradientColor)
         }
     }
-    
-//    @IBInspectable var hasInnerShadow: Bool = false {
-//        didSet {
-//            if hasInnerShadow {
-//                self.displayInnerShadow()
-//            } else {
-//                self.innerShadowLayer.removeFromSuperlayer()
-//            }
-//        }
-//    }
     
     // MARK: - Shadow
     
@@ -118,24 +110,6 @@ import UIKit
         } else {
             self.gradientLayer.removeFromSuperlayer()
         }
-    }
-    
-
-    func displayInnerShadow() {
-
-//        self.innerShadowLayer.frame = backgroundView.bounds
-//        let innerPart = UIBezierPath(rect: backgroundView.bounds).reversing()
-//
-//        self.innerShadowLayer.borderWidth = 3
-//        self.innerShadowLayer.borderColor = UIColor.lightGray.cgColor
-//        self.innerShadowLayer.cornerRadius = self.backgroundView.layer.cornerRadius
-//        self.innerShadowLayer.shadowRadius = self.backgroundView.layer.cornerRadius
-//        self.innerShadowLayer.shadowOpacity = 0.2
-//        self.innerShadowLayer.shadowPath = innerPart.cgPath
-//        self.innerShadowLayer.shadowOffset = CGSize.zero
-//
-//        self.innerShadowLayer.backgroundColor = self.innerBackgroundColor?.cgColor
-//        self.backgroundView.layer.insertSublayer(self.innerShadowLayer, at: 0)
     }
 
     // MARK: - Initialization
