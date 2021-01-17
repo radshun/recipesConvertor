@@ -18,9 +18,13 @@ class ConvertRecipeViewController: BaseViewController {
     @IBOutlet weak var convertViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var changeGlassButton: UIButton!
     
-    var ingredients: [Ingredient] = []
+    var recipe: Recipe?
+    private var ingredients: [Ingredient] {
+        self.recipe?.ingredients ?? []
+    }
     private var multiplier: Double = 1
     private var convertViewOriginY: CGFloat?
+    private var numOfOutcomes: Int?
     
     lazy var sliderBackgroundView: BaseGradientView = {
         let view = BaseGradientView()
@@ -60,6 +64,10 @@ class ConvertRecipeViewController: BaseViewController {
         self.slider.isEnabled = false
         self.convertedNumberTextField.isEnabled = false
         self.changeGlassButton.isHidden = !(self.ingredients.contains{ $0.isConvetable() } && SessionManager.shared.isConvertionEnabled ?? false)
+        if let numOfOutcomes = self.recipe?.numOfOutcomes {
+            self.numOfOutcomes = numOfOutcomes
+            self.originalNumberTextField.text = String(numOfOutcomes)
+        }
         self.sliderBackgroundView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width / 2, height: self.view.frame.height)
         self.view.addSubview(self.sliderBackgroundView)
         self.view.sendSubviewToBack(self.sliderBackgroundView)
@@ -118,6 +126,7 @@ class ConvertRecipeViewController: BaseViewController {
         let number = Float(sender.text?.trimWhiteSpaces() ?? "0") ?? 0
         self.slider.maximumValue = number * 2
         self.slider.value = number
+        self.numOfOutcomes = Int(number)
         self.sliderWasDragged(self.slider)
     }
     
@@ -127,6 +136,13 @@ class ConvertRecipeViewController: BaseViewController {
                 self.tableView.reloadData()
             }
         }
+    }
+    
+    @IBAction func onSavePressed(_ sender: UIButton) {
+        self.recipe?.numOfOutcomes = self.numOfOutcomes
+        self.recipe?.name = "ניסיון עוגיות"
+        self.recipe?.save()
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func onBackPressed(_ sender: UIButton) {

@@ -1653,6 +1653,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDd-tK-uEq">
                                         <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                         <state key="normal" image="rounded_blue"/>
+                                        <connections>
+                                            <action selector="onSavePressed:" destination="55x-DT-WWW" eventType="touchUpInside" id="iXd-lt-397"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="שמירת" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FEz-NJ-Rdw">
                                         <rect key="frame" x="32" y="28" width="76" height="19.5"/>

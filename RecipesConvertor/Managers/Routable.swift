@@ -8,22 +8,23 @@
 import Foundation
 
 protocol Routable {
-    func showAddRecipe(with recipe: String?)
-    func showConvertRecipe(with ingredients: [Ingredient])
+    func showAddRecipe(with recipe: Recipe?)
+    func showConvertRecipe(with recipe: Recipe)
     func showGlassSizeAlert(completion: GlassSizeAlertViewController.CompletionHandler?)
 }
 
 extension BaseViewController: Routable {
     
-    func showAddRecipe(with recipe: String? = nil) {
+    func showAddRecipe(with recipe: Recipe? = nil) {
         let addRecipeViewController = AddRecipeViewController.instantiateFrom(storyboard: .main)
+        addRecipeViewController.recipe = recipe
         addRecipeViewController.modalPresentationStyle = .fullScreen
         self.show(addRecipeViewController, sender: nil)
     }
     
-    func showConvertRecipe(with ingredients: [Ingredient]) {
+    func showConvertRecipe(with recipe: Recipe) {
         let convertRecipeViewController = ConvertRecipeViewController.instantiateFrom(storyboard: .main)
-        convertRecipeViewController.ingredients = ingredients
+        convertRecipeViewController.recipe = recipe
         convertRecipeViewController.modalPresentationStyle = .fullScreen
         self.show(convertRecipeViewController, sender: nil)
     }

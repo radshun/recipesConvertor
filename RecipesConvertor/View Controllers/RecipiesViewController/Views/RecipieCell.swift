@@ -11,8 +11,8 @@ class RecipieCell: UITableViewCell {
 
     @IBOutlet weak var recipeNameLabel: UILabel!
     
-    func configure(with name: String) {
-        self.recipeNameLabel.text = name
+    func configure(with recipe: Recipe) {
+        self.recipeNameLabel.text = recipe.name
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

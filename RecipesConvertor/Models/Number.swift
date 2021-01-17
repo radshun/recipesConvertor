@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Number {
+struct Number: Codable {
     var fraction: Fraction {
         didSet {
             decimal = fraction.asDecimal()
@@ -33,7 +33,7 @@ struct Number {
     }
 }
 
-struct Fraction {
+struct Fraction: Codable {
     var value: Int?
     var topValue: Int?
     var bottomValue: Int?
@@ -59,7 +59,7 @@ struct Fraction {
     }
 }
 
-struct Decimal {
+struct Decimal: Codable {
     var number: Double
     
     typealias Rational = (num : Int, den : Int)

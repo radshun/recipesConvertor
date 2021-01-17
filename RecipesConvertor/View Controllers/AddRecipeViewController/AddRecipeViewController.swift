@@ -14,6 +14,7 @@ class AddRecipeViewController: BaseViewController {
     @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var continueImageView: UIImageView!
     
+    var recipe: Recipe?
     private var ingredients: [IngredientCellModel] = []
     private var units: [UnitType] = SessionManager.shared.units
     private var isValidData: Bool = false
@@ -22,7 +23,7 @@ class AddRecipeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.ingredients = [IngredientCellModel()]
+        self.ingredients = self.recipe?.ingredients.map{ IngredientCellModel(ingredient: $0) } ?? [IngredientCellModel()]
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         self.setupUI()
@@ -94,7 +95,7 @@ extension AddRecipeViewController {
     
     private func proceedToConvertRecipe() {
         if SessionManager.shared.generalDetails != nil || SessionManager.shared.isConvertionEnabled == false {
-            self.showConvertRecipe(with: self.ingredients.map{ $0.ingredient })
+            self.showConvertRecipe(with: Recipe(id: self.recipe?.id, ingredients: self.ingredients.map{ $0.ingredient }))
         } else {
             self.waitForResponse()
         }
@@ -108,7 +109,7 @@ extension AddRecipeViewController {
     @objc func checkIfDataRecieved() {
         if SessionManager.shared.isConvertionEnabled != nil {
             timer?.invalidate()
-            self.showConvertRecipe(with: self.ingredients.map{ $0.ingredient })
+            self.showConvertRecipe(with: Recipe(id: self.recipe?.id,ingredients: self.ingredients.map{ $0.ingredient }))
         }
     }
     

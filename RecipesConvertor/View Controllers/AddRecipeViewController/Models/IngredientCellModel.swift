@@ -18,7 +18,7 @@ struct IngredientCellModel {
         self.touchedSections = []
     }
     
-    init(ingredient: Ingredient, currentDropDownType: IngredientDropDownType, touchedSections: [IngredientDropDownType] = []) {
+    init(ingredient: Ingredient, currentDropDownType: IngredientDropDownType = .none, touchedSections: [IngredientDropDownType] = []) {
         self.ingredient = ingredient
         self.currentDropDownType = currentDropDownType
         self.touchedSections = []

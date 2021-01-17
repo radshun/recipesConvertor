@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Ingredient {
+struct Ingredient: Codable {
     var amount: Number?
     var unit: UnitType?
     var name: String?

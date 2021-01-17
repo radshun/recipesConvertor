@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum UnitType: CaseIterable {
+enum UnitType: Int, Codable ,CaseIterable {
     case unit
     case mililiter
     case liter
@@ -126,5 +126,20 @@ enum UnitType: CaseIterable {
     
     func convertMililiterRatio(from ratio: Double) -> Double {
         self.convertGlassRatio(from: ratio) * Double(SessionManager.shared.glassType.rawValue)
+    }
+    
+    enum Key: CodingKey {
+        case rawValue
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: Key.self)
+        let rawValue = try container.decode(Int.self, forKey: .rawValue)
+        self = UnitType(rawValue: rawValue) ?? .unit
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: Key.self)
+        try container.encode(self.rawValue, forKey: .rawValue)
     }
 }
