@@ -13,6 +13,7 @@ class AddRecipeDetailsViewController: BaseViewController {
     
     @IBOutlet weak var addImageViewButton: UIImageView!
     @IBOutlet weak var recipeNameTextField: UITextField!
+    @IBOutlet weak var recipeBottomView: UIView!
     @IBOutlet weak var addImageButtonsStackView: UIStackView!
     @IBOutlet weak var addImageBottomButtonsStackView: UIStackView!
     @IBOutlet weak var alertView: UIView!
@@ -33,13 +34,12 @@ class AddRecipeDetailsViewController: BaseViewController {
     
     private func setupUI() {
         self.recipeNameTextField.text = self.name
-        self.completeButton.isEnabled = self.name != nil
         if let recipeImage = self.recipeImage {
             self.addImageViewButton.image = recipeImage
             self.addImageButtonsStackView.isHidden = true
             self.addImageBottomButtonsStackView.isHidden = false
         }
-        self.addImageViewButton.fullyRound(diameter: 8)
+        self.addImageViewButton.fullyRound(diameter: 18)
         self.recipeNameTextField.addTarget(self, action: #selector(recipeNameWasChanged), for: .editingChanged)
     }
 
@@ -57,8 +57,8 @@ class AddRecipeDetailsViewController: BaseViewController {
     */
     
     @objc func recipeNameWasChanged(_ sender: UITextField) {
-        self.completeButton.isEnabled = !(sender.text?.isEmpty ?? true)
         self.name = sender.text
+        self.recipeBottomView.backgroundColor = sender.text?.isEmpty ?? true ? .errorRed : .white
     }
     
     @IBAction func onAddGaleryImage(_ sender: UIButton) {
@@ -70,7 +70,11 @@ class AddRecipeDetailsViewController: BaseViewController {
     }
     
     @IBAction func onComplete(_ sender: UIButton) {
-        self.completion?(self.name, self.recipeImage, true)
+        if self.recipeNameTextField.text?.trimWhiteSpaces().isEmpty ?? true {
+            self.recipeBottomView.backgroundColor = .errorRed
+        } else {
+            self.completion?(self.name, self.recipeImage, true)
+        }
     }
     
     @IBAction func onClose(_ sender: UIButton) {

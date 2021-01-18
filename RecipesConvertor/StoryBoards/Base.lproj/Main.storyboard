@@ -2322,7 +2322,7 @@
                                                     <constraint firstAttribute="height" constant="1" id="Xad-V6-bbL"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDk-Gd-xsE">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDk-Gd-xsE">
                                                 <rect key="frame" x="0.0" y="0.0" width="331" height="67"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                 <state key="normal" title="אישור">
@@ -2393,6 +2393,7 @@
                         <outlet property="addImageViewButton" destination="itC-Ek-zPd" id="tN5-jd-281"/>
                         <outlet property="alertView" destination="Ecw-HJ-Lld" id="Rk2-2t-sb4"/>
                         <outlet property="completeButton" destination="DDk-Gd-xsE" id="atJ-H7-Wea"/>
+                        <outlet property="recipeBottomView" destination="g8I-U4-hu2" id="cJ6-Y0-QnV"/>
                         <outlet property="recipeNameTextField" destination="pCQ-5t-a2r" id="luB-qU-0CD"/>
                     </connections>
                 </viewController>
