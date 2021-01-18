@@ -58,7 +58,9 @@ class ConvertedCell: UITableViewCell {
         self.multiplier = multiplier
         
         let convertable = SessionManager.shared.getConvertableIfExist(ingredient.name)
-        self.convertionType = ingredient.unit == .glass ? .mililiter : .glass
+        if ingredient.unit == .glass {
+            self.convertionType = .mililiter
+        }
         
         self.productNameLabel.text = ingredient.name
         self.beforeUnitLabel.text = ingredient.unit?.description(for: ingredient.amount?.decimal.number)

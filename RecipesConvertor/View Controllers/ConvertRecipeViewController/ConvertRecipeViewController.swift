@@ -73,7 +73,7 @@ class ConvertRecipeViewController: BaseViewController {
             self.slider.value = Float(numOfOutcomes)
             self.originalNumberTextField.text = String(numOfOutcomes)
         } else {
-            self.tableView.alpha = 0.4
+            self.tableView.alpha = 0.3
             self.hintView.isHidden = false
         }
         self.sliderBackgroundView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width / 2, height: self.view.frame.height)
@@ -222,7 +222,7 @@ extension ConvertRecipeViewController {
         if self.convertViewBottomConstraint.constant != 0 {
             self.convertView.alpha = 0.6
             UIView.animate(withDuration: 0.3) { [weak self] in
-                self?.tableView.alpha = self?.slider.isEnabled ?? true ? 1 : 0.4
+                self?.tableView.alpha = self?.slider.isEnabled ?? true ? 1 : 0.3
                 self?.hintView.isHidden = self?.slider.isEnabled ?? true
             }
             UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.3, options: .showHideTransitionViews) { [weak self] in
