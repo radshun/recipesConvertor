@@ -72,7 +72,7 @@ class ConvertedCell: UITableViewCell {
         self.flippedBeforeAmountLabel.attributedText = self.afterAmountLabel.attributedText
         if let ratio = convertable?.ratio {
             let flippedMultiplied = convertionType == .glass ? ingredient.unit?.convertGlassRatio(from: ratio) : ingredient.unit?.convertMililiterRatio(from: ratio)
-            let flippedConvertedAmount = ((flippedMultiplied ?? 0) * (multiplied?.asDecimal().number ?? 0))
+            let flippedConvertedAmount = convertionType == .glass ? ((flippedMultiplied ?? 0) * (multiplied?.asDecimal().number ?? 0)) : Double(Int(((flippedMultiplied ?? 0) * (multiplied?.asDecimal().number ?? 0))))
             self.flippedAfterUnitLabel.text = self.convertionType.description(for: flippedConvertedAmount)
             self.flippedAfterAmountLabel.attributedText = flippedConvertedAmount == 0 ? NSAttributedString(string: "0") : Decimal(number: flippedConvertedAmount).asFractionBest().asAttributedString()
         } else {
@@ -115,9 +115,9 @@ class ConvertedCell: UITableViewCell {
         
         if let ratio = convertable?.ratio {
             let flippedMultiplied = convertionType == .glass ? ingredient.unit?.convertGlassRatio(from: ratio) : ingredient.unit?.convertMililiterRatio(from: ratio)
-            let flippedConvertedAmount = ((flippedMultiplied ?? 0) * (multiplied?.asDecimal().number ?? 0))
+            let flippedConvertedAmount = convertionType == .glass ? ((flippedMultiplied ?? 0) * (multiplied?.asDecimal().number ?? 0)) : Double(Int(((flippedMultiplied ?? 0) * (multiplied?.asDecimal().number ?? 0))))
             self.flippedAfterUnitLabel.text = self.convertionType.description(for: flippedConvertedAmount)
-            self.flippedAfterAmountLabel.attributedText = flippedConvertedAmount == 0 ? NSAttributedString(string: "0") : flippedConvertedAmount.asFraction().asAttributedString()
+            self.flippedAfterAmountLabel.attributedText = flippedConvertedAmount == 0 ? NSAttributedString(string: "0") : Decimal(number: flippedConvertedAmount).asFractionBest().asAttributedString()
         } else {
             self.flippedAfterUnitLabel.text = ingredient.unit?.description(for: multiplied?.asDecimal().number)
         }

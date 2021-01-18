@@ -29,6 +29,7 @@ class AddRecipeDetailsViewController: BaseViewController {
     
     private func setupUI() {
         self.recipeNameTextField.text = self.name
+        self.completeButton.isEnabled = self.name != nil
         self.recipeNameTextField.addTarget(self, action: #selector(recipeNameWasChanged), for: .editingChanged)
     }
 

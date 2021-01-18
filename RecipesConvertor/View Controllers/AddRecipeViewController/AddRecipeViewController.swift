@@ -13,7 +13,7 @@ class AddRecipeViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var continueView: UIView!
     @IBOutlet weak var errorView: UIView!
-    @IBOutlet weak var continueImageView: UIImageView!
+    @IBOutlet weak var continueImageView: LoadingImageView!
     @IBOutlet weak var navigationTitleLabel: UILabel!
     
     var recipe: Recipe?
@@ -222,21 +222,10 @@ extension AddRecipeViewController {
 //MARK: Loading Animations
 extension AddRecipeViewController {
     private func showLoadingAnimation() {
-        DispatchQueue.main.async { [unowned self] in
-            self.continueImageView.image = UIImage.gif(asset: "loading")
-        }
+        self.continueImageView.startLoading()
     }
     
     private func removeLoadingAnimation() {
-        DispatchQueue.main.async { [unowned self] in
-            UIView.animate(withDuration: 0.3) { [weak self] in
-                self?.continueImageView.alpha = 0
-            } completion: { _ in
-                self.continueImageView.image = UIImage(named: "checkmark")
-                UIView.animate(withDuration: 0.3) { [weak self] in
-                    self?.continueImageView.alpha = 1
-                }
-            }
-        }
+        self.continueImageView.stopLoading()
     }
 }

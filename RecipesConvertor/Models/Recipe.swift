@@ -10,9 +10,9 @@ import UIKit
 struct Recipe: Codable {
     var id: Int
     var name: String?
-    private var codableImage: CodableImage?
     var ingredients: [Ingredient]
     var numOfOutcomes: Int?
+    private var codableImage: CodableImage?
     
     var image: UIImage? {
         set{ self.codableImage = CodableImage(image: newValue) }

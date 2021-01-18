@@ -13,6 +13,7 @@
 		A65DCB9D25AF0F1500F87272 /* GeneralService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65DCB9C25AF0F1500F87272 /* GeneralService.swift */; };
 		A65DCBA625AF1F3500F87272 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A65DCBA525AF1F3400F87272 /* GoogleService-Info.plist */; };
 		A65DCBAF25AF21CA00F87272 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65DCBAE25AF21CA00F87272 /* LaunchScreen.storyboard */; };
+		A6769BB925B5682A00FAC996 /* LoadingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6769BB825B5682A00FAC996 /* LoadingImageView.swift */; };
 		A697351125B0178000D08429 /* UnitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A697351025B0178000D08429 /* UnitType.swift */; };
 		A69E538725AB13F000ED9E8B /* Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69E538625AB13F000ED9E8B /* Number.swift */; };
 		A69E538A25AB236C00ED9E8B /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69E538925AB236C00ED9E8B /* NSMutableAttributedString.swift */; };
@@ -65,6 +66,7 @@
 		A65DCB9C25AF0F1500F87272 /* GeneralService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralService.swift; sourceTree = "<group>"; };
 		A65DCBA525AF1F3400F87272 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A65DCBAE25AF21CA00F87272 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A6769BB825B5682A00FAC996 /* LoadingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingImageView.swift; sourceTree = "<group>"; };
 		A697351025B0178000D08429 /* UnitType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitType.swift; sourceTree = "<group>"; };
 		A69E538625AB13F000ED9E8B /* Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Number.swift; sourceTree = "<group>"; };
 		A69E538925AB236C00ED9E8B /* NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedString.swift; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 				A6D4129825A240D3006C8E95 /* BaseGradientView.xib */,
 				A69E539925AC28F900ED9E8B /* CustomUITextField.swift */,
 				A69E539C25AC2C1600ED9E8B /* BaseViewController.swift */,
+				A6769BB825B5682A00FAC996 /* LoadingImageView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				A6B9069825A7675E00C229DB /* Extensions.swift in Sources */,
 				A6B3054925AE14B600AA499B /* SessionManager.swift in Sources */,
 				A65DCB9925AF0EEA00F87272 /* GeneralDetails.swift in Sources */,
+				A6769BB925B5682A00FAC996 /* LoadingImageView.swift in Sources */,
 				A6B9068F25A7651000C229DB /* Ingredient.swift in Sources */,
 				A6D4129025A23E20006C8E95 /* BaseCustomView.swift in Sources */,
 				A6B9068425A61A3700C229DB /* RecipieIngredientCell.swift in Sources */,
