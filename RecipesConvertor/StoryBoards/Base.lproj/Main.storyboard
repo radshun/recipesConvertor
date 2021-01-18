@@ -64,7 +64,7 @@
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AjU-iO-1Bz">
                                                                     <rect key="frame" x="6" y="6" width="20" height="20"/>
-                                                                    <state key="normal" image="galery"/>
+                                                                    <state key="normal" image="white_gallery_change"/>
                                                                     <connections>
                                                                         <action selector="onAddImage:" destination="tkh-oB-2Da" eventType="touchUpInside" id="AXr-qm-eNE"/>
                                                                     </connections>
@@ -2124,14 +2124,14 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="50R-Oc-cUH">
-                                                        <rect key="frame" x="-16" y="182.5" width="247" height="45"/>
+                                                        <rect key="frame" x="-16" y="186.5" width="247" height="45"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wyy-YY-p9u">
                                                                 <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yIu-Gs-m3R">
-                                                                        <rect key="frame" x="8" y="8" width="29" height="29"/>
-                                                                        <state key="normal" image="galery"/>
+                                                                        <rect key="frame" x="9" y="9" width="27" height="27"/>
+                                                                        <state key="normal" image="white_gallery_change"/>
                                                                         <connections>
                                                                             <action selector="onAddGaleryImage:" destination="IIK-WA-Fzr" eventType="touchUpInside" id="UCE-oT-HrT"/>
                                                                         </connections>
@@ -2140,11 +2140,11 @@
                                                                 <color key="backgroundColor" red="0.027450980392156862" green="0.58431372549019611" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="45" id="7ml-mB-J1S"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="yIu-Gs-m3R" secondAttribute="bottom" constant="8" id="EHK-o2-yb8"/>
-                                                                    <constraint firstItem="yIu-Gs-m3R" firstAttribute="leading" secondItem="wyy-YY-p9u" secondAttribute="leading" constant="8" id="YCh-Bp-UYt"/>
-                                                                    <constraint firstItem="yIu-Gs-m3R" firstAttribute="top" secondItem="wyy-YY-p9u" secondAttribute="top" constant="8" id="fce-EE-zIo"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="yIu-Gs-m3R" secondAttribute="bottom" constant="9" id="EHK-o2-yb8"/>
+                                                                    <constraint firstItem="yIu-Gs-m3R" firstAttribute="leading" secondItem="wyy-YY-p9u" secondAttribute="leading" constant="9" id="YCh-Bp-UYt"/>
+                                                                    <constraint firstItem="yIu-Gs-m3R" firstAttribute="top" secondItem="wyy-YY-p9u" secondAttribute="top" constant="9" id="fce-EE-zIo"/>
                                                                     <constraint firstAttribute="width" secondItem="wyy-YY-p9u" secondAttribute="height" multiplier="1:1" id="m4Q-ey-gTa"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="yIu-Gs-m3R" secondAttribute="trailing" constant="8" id="p3Z-jZ-gpC"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="yIu-Gs-m3R" secondAttribute="trailing" constant="9" id="p3Z-jZ-gpC"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="circled" value="YES"/>
@@ -2154,8 +2154,8 @@
                                                                 <rect key="frame" x="202" y="0.0" width="45" height="45"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BvO-6h-x3y">
-                                                                        <rect key="frame" x="8" y="8" width="29" height="29"/>
-                                                                        <state key="normal" image="camera"/>
+                                                                        <rect key="frame" x="9" y="9" width="27" height="27"/>
+                                                                        <state key="normal" image="white_camera_change"/>
                                                                         <connections>
                                                                             <action selector="onAddCameraImage:" destination="IIK-WA-Fzr" eventType="touchUpInside" id="lBl-el-Fmz"/>
                                                                         </connections>
@@ -2163,10 +2163,10 @@
                                                                 </subviews>
                                                                 <color key="backgroundColor" red="0.027450980392156862" green="0.58431372549019611" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="trailing" secondItem="BvO-6h-x3y" secondAttribute="trailing" constant="8" id="Foa-oK-hVf"/>
-                                                                    <constraint firstItem="BvO-6h-x3y" firstAttribute="top" secondItem="05f-9a-ecl" secondAttribute="top" constant="8" id="Gf8-JA-jtA"/>
-                                                                    <constraint firstItem="BvO-6h-x3y" firstAttribute="leading" secondItem="05f-9a-ecl" secondAttribute="leading" constant="8" id="KE5-ZX-Jpz"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="BvO-6h-x3y" secondAttribute="bottom" constant="8" id="jCK-Qy-jID"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="BvO-6h-x3y" secondAttribute="trailing" constant="9" id="Foa-oK-hVf"/>
+                                                                    <constraint firstItem="BvO-6h-x3y" firstAttribute="top" secondItem="05f-9a-ecl" secondAttribute="top" constant="9" id="Gf8-JA-jtA"/>
+                                                                    <constraint firstItem="BvO-6h-x3y" firstAttribute="leading" secondItem="05f-9a-ecl" secondAttribute="leading" constant="9" id="KE5-ZX-Jpz"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="BvO-6h-x3y" secondAttribute="bottom" constant="9" id="jCK-Qy-jID"/>
                                                                     <constraint firstAttribute="width" secondItem="05f-9a-ecl" secondAttribute="height" multiplier="1:1" id="l2e-LL-pW5"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
@@ -2182,7 +2182,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="50R-Oc-cUH" secondAttribute="trailing" constant="-16" id="2wh-Zr-ORx"/>
                                                     <constraint firstItem="itC-Ek-zPd" firstAttribute="top" secondItem="mvV-Wl-j0b" secondAttribute="top" id="4K9-YH-hiu"/>
                                                     <constraint firstItem="50R-Oc-cUH" firstAttribute="leading" secondItem="mvV-Wl-j0b" secondAttribute="leading" constant="-16" id="6ad-lm-JSk"/>
-                                                    <constraint firstAttribute="bottom" secondItem="50R-Oc-cUH" secondAttribute="bottom" constant="-12" id="DOP-fW-frc"/>
+                                                    <constraint firstAttribute="bottom" secondItem="50R-Oc-cUH" secondAttribute="bottom" constant="-16" id="DOP-fW-frc"/>
                                                     <constraint firstItem="itC-Ek-zPd" firstAttribute="leading" secondItem="mvV-Wl-j0b" secondAttribute="leading" id="DYk-8W-rpa"/>
                                                     <constraint firstAttribute="width" secondItem="mvV-Wl-j0b" secondAttribute="height" multiplier="1:1" id="Q12-O4-SrF"/>
                                                     <constraint firstAttribute="trailing" secondItem="aF9-P0-gi1" secondAttribute="trailing" constant="20" symbolic="YES" id="YAi-oY-ca2"/>
@@ -2339,8 +2339,10 @@
         <image name="switch" width="100" height="100"/>
         <image name="undo" width="100" height="100"/>
         <image name="white_arrow_left" width="96" height="96"/>
+        <image name="white_camera_change" width="96" height="96"/>
         <image name="white_circle" width="256" height="243"/>
         <image name="white_filled_close" width="100" height="100"/>
+        <image name="white_gallery_change" width="96" height="96"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
