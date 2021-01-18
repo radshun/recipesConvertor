@@ -91,6 +91,7 @@ class RecipieIngredientCell: UITableViewCell {
         self.amountNumberTextField.attributedPlaceholder = NSAttributedString(string: "שלם", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         
         self.productTextField.resignFirstResponder()
+        self.productTextField.textColor = .darkBlue
         self.productTextField.text = self.ingredient?.ingredient.name
 //        self.amountTextField.attributedText = self.ingredient?.ingredient.amount?.fraction.asAttributedString()
         if let amountText = self.ingredient?.ingredient.amount?.fraction.asAttributedString() {

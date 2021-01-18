@@ -57,6 +57,10 @@ struct Fraction: Codable {
     func asDecimal() -> Decimal {
         Decimal(number: Double(value ?? 0) + (topValue.isNotZero && bottomValue.isNotZero ? Double(Double(topValue!) / Double(bottomValue!)) : 0))
     }
+    
+    func isZero() -> Bool {
+        (value ?? 0 <= 0 || value == nil) && (topValue ?? 0 <= 0 || topValue == nil)
+    }
 }
 
 struct Decimal: Codable {

@@ -58,13 +58,14 @@ class ConvertedCell: UITableViewCell {
         self.multiplier = multiplier
         
         let convertable = SessionManager.shared.getConvertableIfExist(ingredient.name)
+        self.convertionType = ingredient.unit == .glass ? .mililiter : .glass
         
         self.productNameLabel.text = ingredient.name
         self.beforeUnitLabel.text = ingredient.unit?.description(for: ingredient.amount?.decimal.number)
         self.beforeAmountLabel.attributedText = ingredient.amount?.fraction.asAttributedString()
         let multiplied = ingredient.amount?.multiple(by: multiplier)
         self.afterUnitLabel.text = ingredient.unit?.description(for: multiplied?.asDecimal().number)
-        self.afterAmountLabel.attributedText = multiplier == 0 ? NSAttributedString(string: "0") : multiplied?.asAttributedString()
+        self.afterAmountLabel.attributedText = multiplier <= 0 ? NSAttributedString(string: "0") : multiplied?.asAttributedString()
         self.flipButtonView.isHidden = !(ingredient.isConvetable() && SessionManager.shared.isConvertionEnabled ?? false)
         
         self.flippedProductNameLabel.text = ingredient.name
@@ -74,7 +75,8 @@ class ConvertedCell: UITableViewCell {
             let flippedMultiplied = convertionType == .glass ? ingredient.unit?.convertGlassRatio(from: ratio) : ingredient.unit?.convertMililiterRatio(from: ratio)
             let flippedConvertedAmount = convertionType == .glass ? ((flippedMultiplied ?? 0) * (multiplied?.asDecimal().number ?? 0)) : Double(Int(((flippedMultiplied ?? 0) * (multiplied?.asDecimal().number ?? 0))))
             self.flippedAfterUnitLabel.text = self.convertionType.description(for: flippedConvertedAmount)
-            self.flippedAfterAmountLabel.attributedText = flippedConvertedAmount == 0 ? NSAttributedString(string: "0") : Decimal(number: flippedConvertedAmount).asFractionBest().asAttributedString()
+            let flippedConvertedAmountFraction = Decimal(number: flippedConvertedAmount).asFractionBest()
+            self.flippedAfterAmountLabel.attributedText = flippedConvertedAmountFraction.isZero() ? NSAttributedString(string: "0") : flippedConvertedAmountFraction.asAttributedString()
         } else {
             self.flippedAfterUnitLabel.text = ingredient.unit?.description(for: multiplied?.asDecimal().number)
         }
@@ -117,7 +119,8 @@ class ConvertedCell: UITableViewCell {
             let flippedMultiplied = convertionType == .glass ? ingredient.unit?.convertGlassRatio(from: ratio) : ingredient.unit?.convertMililiterRatio(from: ratio)
             let flippedConvertedAmount = convertionType == .glass ? ((flippedMultiplied ?? 0) * (multiplied?.asDecimal().number ?? 0)) : Double(Int(((flippedMultiplied ?? 0) * (multiplied?.asDecimal().number ?? 0))))
             self.flippedAfterUnitLabel.text = self.convertionType.description(for: flippedConvertedAmount)
-            self.flippedAfterAmountLabel.attributedText = flippedConvertedAmount == 0 ? NSAttributedString(string: "0") : Decimal(number: flippedConvertedAmount).asFractionBest().asAttributedString()
+            let flippedConvertedAmountFraction = Decimal(number: flippedConvertedAmount).asFractionBest()
+            self.flippedAfterAmountLabel.attributedText = flippedConvertedAmountFraction.isZero() ? NSAttributedString(string: "0") : flippedConvertedAmountFraction.asAttributedString()
         } else {
             self.flippedAfterUnitLabel.text = ingredient.unit?.description(for: multiplied?.asDecimal().number)
         }
