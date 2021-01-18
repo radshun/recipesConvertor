@@ -194,20 +194,42 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iag-hf-L13">
+                                        <rect key="frame" x="364" y="56" width="26" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="26" id="6PV-tt-TRk"/>
+                                            <constraint firstAttribute="width" constant="26" id="v78-ze-ngy"/>
+                                        </constraints>
+                                        <state key="normal" image="white_search"/>
+                                        <connections>
+                                            <action selector="onSearchPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YMW-ue-Bf4"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="רשימת מתכונים" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esf-uy-yQh">
                                         <rect key="frame" x="105" y="91" width="204" height="38.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r5v-jI-7Ac" customClass="SearchView" customModule="RecipesConvertor" customModuleProvider="target">
+                                        <rect key="frame" x="62" y="90" width="290" height="40"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="rSJ-N6-Ys4"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Iag-hf-L13" secondAttribute="trailing" constant="24" id="6Vv-B8-nRB"/>
                                     <constraint firstItem="esf-uy-yQh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="XIx-Ab-Wp7" secondAttribute="top" constant="32" id="7YF-UL-TEW"/>
                                     <constraint firstItem="esf-uy-yQh" firstAttribute="centerX" secondItem="XIx-Ab-Wp7" secondAttribute="centerX" id="P7Z-CX-iZX"/>
                                     <constraint firstAttribute="bottom" secondItem="esf-uy-yQh" secondAttribute="bottom" constant="32" id="SkE-ui-Ojk"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="esf-uy-yQh" secondAttribute="trailing" constant="32" id="VBr-97-2GG"/>
+                                    <constraint firstItem="r5v-jI-7Ac" firstAttribute="centerX" secondItem="XIx-Ab-Wp7" secondAttribute="centerX" id="ccH-1c-g3S"/>
+                                    <constraint firstItem="r5v-jI-7Ac" firstAttribute="width" secondItem="XIx-Ab-Wp7" secondAttribute="width" multiplier="0.7" id="mOw-vC-pBj"/>
                                     <constraint firstAttribute="trailing" secondItem="EB9-nT-MJn" secondAttribute="trailing" id="o9I-27-m8o"/>
+                                    <constraint firstItem="r5v-jI-7Ac" firstAttribute="centerY" secondItem="esf-uy-yQh" secondAttribute="centerY" id="oKd-ja-HEK"/>
                                     <constraint firstItem="EB9-nT-MJn" firstAttribute="leading" secondItem="XIx-Ab-Wp7" secondAttribute="leading" id="qcb-Ts-u3e"/>
                                     <constraint firstItem="EB9-nT-MJn" firstAttribute="top" secondItem="XIx-Ab-Wp7" secondAttribute="top" constant="-16" id="xeu-0N-CU8"/>
                                     <constraint firstAttribute="bottom" secondItem="EB9-nT-MJn" secondAttribute="bottom" id="ygy-yi-76a"/>
@@ -227,13 +249,17 @@
                             <constraint firstItem="4Vw-5c-FaI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="cA4-Au-hyi"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Z5o-fG-tho" secondAttribute="trailing" id="fDI-DQ-kdG"/>
                             <constraint firstItem="XIx-Ab-Wp7" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.18" id="fWh-vU-xLl"/>
+                            <constraint firstItem="Iag-hf-L13" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="lbI-cj-4f8"/>
                             <constraint firstItem="XIx-Ab-Wp7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="n2i-Lu-DbN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4Vw-5c-FaI" secondAttribute="bottom" constant="32" id="yel-vM-ImO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WCC-M2-NgK"/>
                     <connections>
+                        <outlet property="searchButton" destination="Iag-hf-L13" id="Hji-F8-IN4"/>
+                        <outlet property="searchView" destination="r5v-jI-7Ac" id="brQ-LE-Ohz"/>
                         <outlet property="tableView" destination="Z5o-fG-tho" id="egW-YK-Jbe"/>
+                        <outlet property="titleLabel" destination="esf-uy-yQh" id="cJH-sV-z2L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -2343,6 +2369,7 @@
         <image name="white_circle" width="256" height="243"/>
         <image name="white_filled_close" width="100" height="100"/>
         <image name="white_gallery_change" width="96" height="96"/>
+        <image name="white_search" width="100" height="100"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

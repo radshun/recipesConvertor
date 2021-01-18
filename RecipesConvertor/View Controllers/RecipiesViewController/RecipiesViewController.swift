@@ -7,12 +7,22 @@
 
 import UIKit
 
+enum SearchState {
+    case opened
+    case closed
+}
+
 class RecipiesViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var searchView: SearchView!
+    @IBOutlet weak var searchButton: UIButton!
     
+    private var initialRecipies: [Recipe] = []
     private var recipies: [Recipe] = []
     private var selectedImageIndex: IndexPath?
+    private var searchState: SearchState = .closed
     private lazy var imageUploadManager: ImageUploadManager? = {
         ImageUploadManager(delegate: self)
     }()
@@ -20,26 +30,43 @@ class RecipiesViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setupUI()
         self.setupTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.setupUI()
+        self.fetchData()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        self.setupSearchUI(with: .closed)
     }
 
-    func setupTableView() {
+    private func setupTableView() {
         self.tableView.rowHeight = 100
         self.tableView.estimatedRowHeight = UITableView.automaticDimension
         self.tableView.allowsMultipleSelectionDuringEditing = true
     }
     
-    func setupUI() {
+    private func fetchData() {
         SessionManager.shared.fetchRecipes { recipies in
+            self.initialRecipies = recipies
             self.recipies = recipies
+            self.searchButton.isHidden = recipies.count <= 1 || self.searchState == .opened
             self.tableView.reloadData()
         }
+    }
+    
+    private func setupUI() {
+        self.searchView.delegate = self
+    }
+    
+    @IBAction func onSearchPressed(_ sender: UIButton) {
+        self.setupSearchUI(with: .opened)
     }
     
     @IBAction func onAddRecipe(_ sender: UIButton) {
@@ -73,6 +100,9 @@ extension RecipiesViewController: UITableViewDataSource, UITableViewDelegate {
             if isApproved {
                 if editingStyle == .delete {
                     let recipe = self.recipies.remove(at: indexPath.row)
+                    if let index = self.initialRecipies.firstIndex(where: { $0.id == recipe.id }) {
+                        self.initialRecipies.remove(at: index)
+                    }
                     SessionManager.shared.deleteRecipe(recipe)
                     self.tableView.beginUpdates()
                     self.tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -107,6 +137,10 @@ extension RecipiesViewController: ImageUploadManagerDelegate {
         recipe.image = image
         self.recipies.remove(at: indexPath.row)
         self.recipies.insert(recipe, at: indexPath.row)
+        if let index = self.initialRecipies.firstIndex(where: { $0.id == recipe.id }) {
+            self.initialRecipies.remove(at: index)
+            self.initialRecipies.insert(recipe, at: index)
+        }
         SessionManager.shared.addRecipe(recipe)
         self.tableView.reloadRows(at: [indexPath], with: .automatic)
         self.selectedImageIndex = nil
@@ -114,10 +148,30 @@ extension RecipiesViewController: ImageUploadManagerDelegate {
 }
 
 //MARK: Search Handling
-extension RecipiesViewController {
-    private func search(_ text: String?) {
-        guard let text = text else { return }
-        self.recipies = self.recipies.filter{ $0.name?.contains(text) ?? false }
+extension RecipiesViewController: SearchViewDelegate {
+    
+    func search(_ text: String?) {
+        if let text = text, !text.isEmpty {
+            self.recipies = self.recipies.filter{ $0.name?.contains(text) ?? false }
+        } else {
+            self.recipies = self.initialRecipies
+        }
         self.tableView.reloadData()
+    }
+    
+    private func setupSearchUI(with state: SearchState) {
+        self.searchState = state
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            switch state {
+            case .opened:
+                self?.titleLabel.isHidden = true
+                self?.searchButton.isHidden = true
+                self?.searchView.isHidden = false
+            case .closed:
+                self?.titleLabel.isHidden = false
+                self?.searchButton.isHidden = false
+                self?.searchView.isHidden = true
+            }
+        }
     }
 }
