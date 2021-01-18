@@ -43,6 +43,7 @@ class AddRecipeDetailsViewController: BaseViewController {
         self.recipeNameTextField.addTarget(self, action: #selector(recipeNameWasChanged), for: .editingChanged)
     }
 
+    /*
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
 
@@ -53,6 +54,7 @@ class AddRecipeDetailsViewController: BaseViewController {
             }
         }
     }
+    */
     
     @objc func recipeNameWasChanged(_ sender: UITextField) {
         self.completeButton.isEnabled = !(sender.text?.isEmpty ?? true)

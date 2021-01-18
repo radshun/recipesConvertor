@@ -21,12 +21,12 @@ public struct CodableImage: Codable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let data = try container.decode(Data.self, forKey: CodingKeys.image)
-        self.image = UIImage(data: data) ?? UIImage()
+        self.image = UIImage(data: data)
     }
     
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        let data = image?.pngData() ?? Data()
+        let data = image?.jpegData(compressionQuality: 0.5)
         try container.encode(data, forKey: CodingKeys.image)
     }
 }
