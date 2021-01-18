@@ -26,11 +26,11 @@ extension UIView {
         layer.mask = mask
     }
 
-    func fullyRound(diameter: CGFloat, borderColor: UIColor, borderWidth: CGFloat) {
+    func fullyRound(diameter: CGFloat, borderColor: UIColor = .clear, borderWidth: CGFloat = 0) {
         layer.masksToBounds = true
         layer.cornerRadius = diameter / 2
         layer.borderWidth = borderWidth
-        layer.borderColor = borderColor.cgColor;
+        layer.borderColor = borderColor.cgColor
     }
     
     func removeCorners() {

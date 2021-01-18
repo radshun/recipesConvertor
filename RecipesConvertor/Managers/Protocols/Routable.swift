@@ -5,13 +5,13 @@
 //  Created by Daniel Radshun on 17/01/2021.
 //
 
-import Foundation
+import UIKit
 
 protocol Routable {
     func showAddRecipe(with recipe: Recipe?)
     func showConvertRecipe(with recipe: Recipe)
     func showGlassSizeAlert(completion: GlassSizeAlertCompletionHandler?)
-    func showAddRecipeDetailsAlert(with name: String?, completion: AddRecipeDetailsCompletionHandler?)
+    func showAddRecipeDetailsAlert(with name: String?, image: UIImage?, completion: AddRecipeDetailsCompletionHandler?)
 }
 
 extension BaseViewController: Routable {
@@ -37,9 +37,10 @@ extension BaseViewController: Routable {
         self.present(glassSizeAlertViewController, animated: true)
     }
     
-    func showAddRecipeDetailsAlert(with name: String? = nil, completion: AddRecipeDetailsCompletionHandler?) {
+    func showAddRecipeDetailsAlert(with name: String? = nil, image: UIImage? = nil, completion: AddRecipeDetailsCompletionHandler?) {
         let addRecipeDetailsViewController = AddRecipeDetailsViewController.instantiateFrom(storyboard: .main)
         addRecipeDetailsViewController.name = name
+        addRecipeDetailsViewController.recipeImage = image
         addRecipeDetailsViewController.completion = completion
         addRecipeDetailsViewController.modalPresentationStyle = .overCurrentContext
         self.present(addRecipeDetailsViewController, animated: true)

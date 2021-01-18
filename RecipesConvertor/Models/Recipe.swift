@@ -12,7 +12,7 @@ struct Recipe: Codable {
     var name: String?
     var ingredients: [Ingredient]
     var numOfOutcomes: Int?
-    private var codableImage: CodableImage?
+    private(set) var codableImage: CodableImage?
     
     var image: UIImage? {
         set{ self.codableImage = CodableImage(image: newValue) }

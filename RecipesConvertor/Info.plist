@@ -64,5 +64,11 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>PHPhotoLibraryPreventAutomaticLimitedAccessAlert</key>
+	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>הוספת תמונה למתכון</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>הוספת תמונה למתכון</string>
 </dict>
 </plist>

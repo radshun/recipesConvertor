@@ -11,7 +11,11 @@ class RecipiesViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var recipies: [Recipe] = []
+    private var recipies: [Recipe] = []
+    private var selectedImageIndex: IndexPath?
+    private lazy var imageUploadManager: ImageUploadManager? = {
+        ImageUploadManager(delegate: self)
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +54,7 @@ extension RecipiesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RecipieCell.self), for: indexPath) as! RecipieCell
-        cell.configure(with: recipies[indexPath.row])
+        cell.configure(with: recipies[indexPath.row], indexPath: indexPath, delegate: self)
         return cell
     }
     
@@ -85,6 +89,31 @@ extension RecipiesViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+//MARK: RecipieCellDelegate
+extension RecipiesViewController: RecipieCellDelegate {
+    
+    func addImagePressed(in indexPath: IndexPath) {
+        self.selectedImageIndex = indexPath
+        self.imageUploadManager?.showOptions()
+    }
+}
+
+//MARK: ImageUploadManagerDelegate
+extension RecipiesViewController: ImageUploadManagerDelegate {
+    
+    func imageWasPicked(image: UIImage?) {
+        guard let image = image, let indexPath = self.selectedImageIndex,
+              var recipe = self.recipies[safe: indexPath.row] else { return }
+        recipe.image = image
+        self.recipies.remove(at: indexPath.row)
+        self.recipies.insert(recipe, at: indexPath.row)
+        SessionManager.shared.addRecipe(recipe)
+        self.tableView.reloadRows(at: [indexPath], with: .automatic)
+        self.selectedImageIndex = nil
+    }
+}
+
+//MARK: Search Handling
 extension RecipiesViewController {
     private func search(_ text: String?) {
         guard let text = text else { return }

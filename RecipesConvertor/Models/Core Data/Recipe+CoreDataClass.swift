@@ -25,7 +25,7 @@ public class RecipeCoreData: NSManagedObject {
         self.name = recipe.name ?? ""
         self.ingredient = try? JSONEncoder().encode(recipe.ingredients)
         self.numOfOutcomes = Int32(recipe.numOfOutcomes ?? 0)
-        self.image = try? JSONEncoder().encode(recipe.name)
+        self.image = try? JSONEncoder().encode(recipe.codableImage)
     }
     
     public class func fetch() -> NSFetchRequest<RecipeCoreData> {
