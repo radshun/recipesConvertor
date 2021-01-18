@@ -617,6 +617,7 @@
                                                                         <userDefinedRuntimeAttribute type="color" keyPath="bottomGradientColor">
                                                                             <color key="value" red="0.4549019608" green="0.8862745098" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                                                         </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="hasShadow" value="NO"/>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NE7-Tv-Tbi">
