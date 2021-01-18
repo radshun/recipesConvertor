@@ -18,6 +18,7 @@ class RecipiesViewController: BaseViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var searchView: SearchView!
     @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var hintView: UIView!
     
     private var initialRecipies: [Recipe] = []
     private var recipies: [Recipe] = []
@@ -56,6 +57,7 @@ class RecipiesViewController: BaseViewController {
         SessionManager.shared.fetchRecipes { recipies in
             self.initialRecipies = recipies
             self.recipies = recipies
+            self.hintView.isHidden = !recipies.isEmpty
             self.searchButton.isHidden = recipies.count <= 6 || self.searchState == .opened
             self.tableView.reloadData()
         }

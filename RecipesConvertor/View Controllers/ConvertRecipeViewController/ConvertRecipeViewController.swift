@@ -17,6 +17,7 @@ class ConvertRecipeViewController: BaseViewController {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var convertViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var changeGlassButton: UIButton!
+    @IBOutlet weak var hintView: UIView!
     
     var recipe: Recipe?
     private var ingredients: [Ingredient] {
@@ -65,10 +66,15 @@ class ConvertRecipeViewController: BaseViewController {
         self.changeGlassButton.isHidden = !(self.ingredients.contains{ $0.isConvetable() } && SessionManager.shared.isConvertionEnabled ?? false)
         if let numOfOutcomes = self.recipe?.numOfOutcomes {
             self.numOfOutcomes = numOfOutcomes
+            self.tableView.alpha = 1
+            self.hintView.isHidden = true
             self.slider.isEnabled = self.numOfOutcomes.isNotZero
             self.slider.maximumValue = Float(numOfOutcomes * 2)
             self.slider.value = Float(numOfOutcomes)
             self.originalNumberTextField.text = String(numOfOutcomes)
+        } else {
+            self.tableView.alpha = 0.4
+            self.hintView.isHidden = false
         }
         self.sliderBackgroundView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width / 2, height: self.view.frame.height)
         self.view.addSubview(self.sliderBackgroundView)
@@ -124,9 +130,10 @@ class ConvertRecipeViewController: BaseViewController {
     
     @IBAction func originalNumberTextFieldHasChanged(_ sender: UITextField) {
         self.slider.isEnabled = !(sender.text?.isEmpty ?? true)
+        self.hintView.isHidden = true
         self.convertedNumberTextField.isEnabled = self.slider.isEnabled
         let number = Float(sender.text?.trimWhiteSpaces() ?? "0") ?? 0
-        self.slider.maximumValue = number * 2
+        self.slider.maximumValue = (number * 2) != 0 ? number * 2 : 1
         self.slider.value = number
         self.numOfOutcomes = Int(number)
         self.sliderWasDragged(self.slider)
@@ -199,6 +206,7 @@ extension ConvertRecipeViewController {
                 self.convertView.alpha = 0.6
                 UIView.animate(withDuration: 0.3) { [weak self] in
                     self?.tableView.alpha = 0.4
+                    self?.hintView.isHidden = true
                 }
                 UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.3, options: .showHideTransitionViews) { [weak self] in
                     self?.convertView.alpha = 1
@@ -214,7 +222,8 @@ extension ConvertRecipeViewController {
         if self.convertViewBottomConstraint.constant != 0 {
             self.convertView.alpha = 0.6
             UIView.animate(withDuration: 0.3) { [weak self] in
-                self?.tableView.alpha = 1
+                self?.tableView.alpha = self?.slider.isEnabled ?? true ? 1 : 0.4
+                self?.hintView.isHidden = self?.slider.isEnabled ?? true
             }
             UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.3, options: .showHideTransitionViews) { [weak self] in
                 self?.convertView.alpha = 1
