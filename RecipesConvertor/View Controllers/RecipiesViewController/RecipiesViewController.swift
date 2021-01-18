@@ -56,7 +56,7 @@ class RecipiesViewController: BaseViewController {
         SessionManager.shared.fetchRecipes { recipies in
             self.initialRecipies = recipies
             self.recipies = recipies
-            self.searchButton.isHidden = recipies.count <= 1 || self.searchState == .opened
+            self.searchButton.isHidden = recipies.count <= 6 || self.searchState == .opened
             self.tableView.reloadData()
         }
     }
