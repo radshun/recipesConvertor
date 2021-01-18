@@ -7,7 +7,7 @@
 
 import UIKit
 
-typealias AddRecipeDetailsCompletionHandler = ((_ name: String?, _ image: UIImage?) -> ())
+typealias AddRecipeDetailsCompletionHandler = ((_ name: String?, _ image: UIImage?, _ shouldSave: Bool) -> ())
 
 class AddRecipeDetailsViewController: BaseViewController {
     
@@ -49,7 +49,7 @@ class AddRecipeDetailsViewController: BaseViewController {
         guard let location = touches.first?.location(in: self.view) else { return }
         if !self.alertView.frame.contains(location) {
             self.dismiss(animated: true) {
-                self.completion?(nil,nil)
+                self.completion?(self.name, self.recipeImage, false)
             }
         }
     }
@@ -69,13 +69,13 @@ class AddRecipeDetailsViewController: BaseViewController {
     
     @IBAction func onComplete(_ sender: UIButton) {
         self.dismiss(animated: true) {
-            self.completion?(self.name, self.recipeImage)
+            self.completion?(self.name, self.recipeImage, true)
         }
     }
     
     @IBAction func onClose(_ sender: UIButton) {
         self.dismiss(animated: true) {
-            self.completion?(nil,nil)
+            self.completion?(self.name, self.recipeImage, false)
         }
     }
 }
