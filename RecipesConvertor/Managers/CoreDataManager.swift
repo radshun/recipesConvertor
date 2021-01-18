@@ -14,7 +14,7 @@ class CoreDataManager {
         let container = NSPersistentContainer(name: "RecipesConvertor")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+                assertionFailure("Unresolved error \(error), \(error.userInfo)")
             }
         })
         return container
@@ -24,14 +24,16 @@ class CoreDataManager {
         return persistentContainer.viewContext
     }()
 
-    func saveContext () {
+    func saveContext(completion: (() -> ())? = nil) {
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
                 try context.save()
+                completion?()
             } catch {
                 let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                completion?()
+                assertionFailure("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
     }
@@ -47,10 +49,12 @@ class CoreDataManager {
         }
     }
     
-    func deleteRecipe(_ recipe: Recipe){
+    func deleteRecipe(_ recipe: Recipe, completion: @escaping () -> ()){
         guard let recipies = try? context.fetch(RecipeCoreData.fetchRequest()) as? [RecipeCoreData],
               let recipe = (recipies.first { $0.id == Int32(recipe.id) }) else { return }
         context.delete(recipe)
-        saveContext()
+        saveContext {
+            completion()
+        }
     }
 }

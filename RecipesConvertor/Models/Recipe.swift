@@ -27,7 +27,9 @@ struct Recipe: Codable {
         self.image = image
     }
     
-    func save() {
-        SessionManager.shared.addRecipe(self)
+    func save(completion: (() -> ())?) {
+        SessionManager.shared.addRecipe(self) {
+            completion?()
+        }
     }
 }

@@ -145,10 +145,19 @@ class ConvertRecipeViewController: BaseViewController {
         self.showAddRecipeDetailsAlert(with: self.recipe?.name, image: self.recipe?.image) { (name, image, shouldSave) in
             guard let name = name else { return }
             self.recipe?.name = name
-            self.recipe?.image = image
+            if let image = image {
+                self.recipe?.image = image
+            }
             if shouldSave {
-                self.recipe?.save()
-                self.navigationController?.popToRootViewController(animated: true)
+                self.recipe?.save() {
+                    if let addRecipeDetailsAlert = UIApplication.topViewController() as? AddRecipeDetailsViewController {
+                        addRecipeDetailsAlert.dismiss(animated: true) { [weak self] in
+                            self?.navigationController?.popToRootViewController(animated: true)
+                        }
+                    } else {
+                        self.navigationController?.popToRootViewController(animated: true)
+                    }
+                }
             }
         }
     }

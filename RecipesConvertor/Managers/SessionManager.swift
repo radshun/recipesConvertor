@@ -48,18 +48,31 @@ extension SessionManager {
         completion(self.recipies)
     }
     
-    func deleteRecipe(_ recipe: Recipe) {
-        self.coreDataManager.deleteRecipe(recipe)
-        self.recipies.removeAll{ $0.id == recipe.id }
+    func deleteRecipe(_ recipe: Recipe, completion: (() -> ())? = nil) {
+        self.coreDataManager.deleteRecipe(recipe) {
+            self.recipies.removeAll{ $0.id == recipe.id }
+            completion?()
+        }
     }
     
-    func addRecipe(_ recipe: Recipe) {
-        if self.recipies.contains(where: { $0.id == recipe.id }) {
-            self.deleteRecipe(recipe)
+    func addRecipe(_ recipe: Recipe, completion: (() -> ())? = nil) {
+        self.deleteIfExist(recipe) {
+            let _ = RecipeCoreData(with: recipe)
+            self.recipies.append(recipe)
+            self.coreDataManager.saveContext {
+                completion?()
+            }
         }
-        let _ = RecipeCoreData(with: recipe)
-        self.coreDataManager.saveContext()
-        self.recipies.append(recipe)
+    }
+    
+    private func deleteIfExist(_ recipe: Recipe, completion: @escaping () ->()) {
+        if self.recipies.contains(where: { $0.id == recipe.id }) {
+            self.deleteRecipe(recipe) {
+                completion()
+            }
+        } else {
+            completion()
+        }
     }
 }
 

@@ -68,9 +68,7 @@ class AddRecipeDetailsViewController: BaseViewController {
     }
     
     @IBAction func onComplete(_ sender: UIButton) {
-        self.dismiss(animated: true) {
-            self.completion?(self.name, self.recipeImage, true)
-        }
+        self.completion?(self.name, self.recipeImage, true)
     }
     
     @IBAction func onClose(_ sender: UIButton) {
@@ -85,7 +83,7 @@ extension AddRecipeDetailsViewController: ImageUploadManagerDelegate {
     func imageWasPicked(image: UIImage?) {
         self.recipeImage = image
         self.addImageViewButton.image = image
-        self.addImageButtonsStackView.isHidden = true
-        self.addImageBottomButtonsStackView.isHidden = false
+        self.addImageButtonsStackView.isHidden = image != nil
+        self.addImageBottomButtonsStackView.isHidden = image == nil
     }
 }
