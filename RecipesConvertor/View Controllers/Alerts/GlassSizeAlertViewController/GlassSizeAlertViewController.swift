@@ -66,8 +66,8 @@ class GlassSizeAlertViewController: BaseViewController {
     private func changeGlass(to size: GlassSize) {
         switch size {
         case .medium:
-            self.mediumView.topGradientColor = .topBlue
-            self.mediumView.bottomGradientColor = .topBlue
+            self.mediumView.topGradientColor = .darkBlue
+            self.mediumView.bottomGradientColor = .darkBlue
             self.mediumGlassImageView.isHidden = false
             self.bigView.topGradientColor = .clear
             self.bigView.bottomGradientColor = .clear
@@ -76,8 +76,8 @@ class GlassSizeAlertViewController: BaseViewController {
             self.mediumView.topGradientColor = .clear
             self.mediumView.bottomGradientColor = .clear
             self.mediumGlassImageView.isHidden = true
-            self.bigView.topGradientColor = .topBlue
-            self.bigView.bottomGradientColor = .topBlue
+            self.bigView.topGradientColor = .darkBlue
+            self.bigView.bottomGradientColor = .darkBlue
             self.bigGlassImageView.isHidden = false
         }
         self.glassType = size

@@ -23,5 +23,6 @@ extension UIColor {
     static let topBlue = UIColor(hex: 0x08aac2, alpha: 1.0)
     static let bottomBlue = UIColor(hex: 0x60c7d6, alpha: 1.0)
     static let blueImage = UIColor(red: 84, green: 187, blue: 207, alpha: 1)
+    static let darkBlue = UIColor(hex: 0x0795aa, alpha: 1.0)
     static let errorRed = UIColor(hex: 0xed3e3e, alpha: 1)
 }
