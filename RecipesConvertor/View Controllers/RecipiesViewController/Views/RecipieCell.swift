@@ -28,7 +28,7 @@ class RecipieCell: UITableViewCell {
         self.recipeImageView.image = recipe.image
         self.noImageButton.isHidden = recipe.image != nil
         self.hasImageView.isHidden = recipe.image == nil
-        self.recipeImageView.fullyRound(diameter: 8)
+        self.recipeImageView.fullyRound(diameter: 12)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
