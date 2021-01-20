@@ -83,6 +83,10 @@ class RecipieIngredientCell: UITableViewCell {
     private func setupUI() {
         self.setupDropDown()
         
+        self.fractionTopAmountTextField.delegate = self
+        self.fractionBottomAmountTextField.delegate = self
+        self.amountNumberTextField.delegate = self
+        
         self.fractionTopAmountTextField.tintColor = .white
         self.fractionTopAmountTextField.attributedPlaceholder = NSAttributedString(string: "מונה", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.9)])
         self.fractionBottomAmountTextField.tintColor = .white
@@ -217,6 +221,13 @@ extension RecipieIngredientCell {
         self.amountButton.setAttributedTitle(self.ingredient?.ingredient.amount?.fraction.asAttributedString(), for: .normal)
         self.touchedSections.insert(.amout)
         self.handleErrors()
+    }
+}
+
+//MARK: UITextFieldDelegate
+extension RecipieIngredientCell: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        (textField as? BaseUITextField)?.handleRange(range, replacementString: string) ?? true
     }
 }
 

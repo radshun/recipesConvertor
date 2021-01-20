@@ -57,6 +57,8 @@ class ConvertRecipeViewController: BaseViewController {
     }
 
     func setupUI() {
+        self.originalNumberTextField.delegate = self
+        self.convertedNumberTextField.delegate = self
         self.tableView.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
         self.slider.setThumbImage(UIImage(named: "slider"), for: .normal)
         self.slider.setThumbImage(UIImage(named: "slider"), for: .focused)
@@ -196,6 +198,13 @@ extension ConvertRecipeViewController: UITableViewDataSource, UITableViewDelegat
             cell.configure(with: ingredient, multiplier: self.multiplier)
         }
         return cell
+    }
+}
+
+//MARK: UITextFieldDelegate
+extension ConvertRecipeViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        (textField as? BaseUITextField)?.handleRange(range, replacementString: string) ?? true
     }
 }
 

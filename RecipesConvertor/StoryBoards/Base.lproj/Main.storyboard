@@ -720,6 +720,9 @@
                                                                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                                     <userDefinedRuntimeAttributes>
                                                                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="numberTypeSafe" value="YES"/>
+                                                                                                        <userDefinedRuntimeAttribute type="number" keyPath="maxRange">
+                                                                                                            <integer key="value" value="6"/>
+                                                                                                        </userDefinedRuntimeAttribute>
                                                                                                     </userDefinedRuntimeAttributes>
                                                                                                     <connections>
                                                                                                         <action selector="amountTextHasChanged:" destination="LOY-Kl-29d" eventType="editingChanged" id="m0f-Cj-Wmm"/>
@@ -778,6 +781,9 @@
                                                                                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                                             <userDefinedRuntimeAttributes>
                                                                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="numberTypeSafe" value="YES"/>
+                                                                                                                <userDefinedRuntimeAttribute type="number" keyPath="maxRange">
+                                                                                                                    <integer key="value" value="3"/>
+                                                                                                                </userDefinedRuntimeAttribute>
                                                                                                             </userDefinedRuntimeAttributes>
                                                                                                             <connections>
                                                                                                                 <action selector="fractionTopAmountTextHasChanged:" destination="LOY-Kl-29d" eventType="editingChanged" id="PDB-K1-kS9"/>
@@ -838,6 +844,9 @@
                                                                                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                                             <userDefinedRuntimeAttributes>
                                                                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="numberTypeSafe" value="YES"/>
+                                                                                                                <userDefinedRuntimeAttribute type="number" keyPath="maxRange">
+                                                                                                                    <integer key="value" value="3"/>
+                                                                                                                </userDefinedRuntimeAttribute>
                                                                                                             </userDefinedRuntimeAttributes>
                                                                                                             <connections>
                                                                                                                 <action selector="fractionBottomAmountTextHasChanged:" destination="LOY-Kl-29d" eventType="editingChanged" id="6mY-UV-Dq2"/>
@@ -1292,7 +1301,7 @@
                                                                                                     <color key="textColor" red="0.18823529410000001" green="0.50588235290000005" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                     <nil key="highlightedColor"/>
                                                                                                 </label>
-                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="כמות" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iz9-jv-LUr">
+                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="כמות" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iz9-jv-LUr">
                                                                                                     <rect key="frame" x="53.5" y="0.0" width="37.5" height="21.5"/>
                                                                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                                                                     <color key="textColor" red="0.18823529410000001" green="0.50588235290000005" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1327,7 +1336,7 @@
                                                                                                     <color key="textColor" red="0.18823529410000001" green="0.50588235290000005" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                     <nil key="highlightedColor"/>
                                                                                                 </label>
-                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="כמות" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q7L-0x-3gz">
+                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="כמות" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q7L-0x-3gz">
                                                                                                     <rect key="frame" x="53.5" y="0.0" width="37.5" height="21.5"/>
                                                                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                                                                     <color key="textColor" red="0.18823529410000001" green="0.50588235290000005" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1352,7 +1361,9 @@
                                                                         <constraint firstAttribute="trailing" secondItem="AHc-hW-rdr" secondAttribute="trailing" constant="16" id="LmY-ys-hEB"/>
                                                                         <constraint firstItem="ulp-PG-vkJ" firstAttribute="top" secondItem="BdN-cK-9Zo" secondAttribute="top" id="RQH-09-M3O"/>
                                                                         <constraint firstItem="Lx4-DD-OLU" firstAttribute="leading" relation="lessThanOrEqual" secondItem="BdN-cK-9Zo" secondAttribute="leading" constant="32" id="WOx-Fk-tgc"/>
+                                                                        <constraint firstItem="p86-Jh-9KT" firstAttribute="width" relation="lessThanOrEqual" secondItem="BdN-cK-9Zo" secondAttribute="width" multiplier="0.36" id="Y4d-d0-2z3"/>
                                                                         <constraint firstItem="Jot-cc-BJo" firstAttribute="leading" secondItem="BdN-cK-9Zo" secondAttribute="leading" constant="8" id="a7E-Z7-42K"/>
+                                                                        <constraint firstItem="HcC-6s-Xxn" firstAttribute="width" relation="lessThanOrEqual" secondItem="BdN-cK-9Zo" secondAttribute="width" multiplier="0.36" id="due-yh-ef0"/>
                                                                         <constraint firstItem="Lx4-DD-OLU" firstAttribute="top" secondItem="Jot-cc-BJo" secondAttribute="bottom" constant="16" id="evF-Md-nhK"/>
                                                                         <constraint firstItem="Jot-cc-BJo" firstAttribute="top" secondItem="AHc-hW-rdr" secondAttribute="bottom" constant="6" id="jYN-do-lEV"/>
                                                                         <constraint firstAttribute="trailing" secondItem="Jot-cc-BJo" secondAttribute="trailing" constant="8" id="kRw-CM-LmC"/>
@@ -1474,7 +1485,7 @@
                                                                                             <color key="textColor" red="0.18823529410000001" green="0.50588235290000005" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
-                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="כמות" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJ1-77-KlI">
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="כמות" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cJ1-77-KlI">
                                                                                             <rect key="frame" x="51.5" y="0.0" width="49" height="21.5"/>
                                                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                                                             <color key="textColor" red="0.18823529410000001" green="0.50588235290000005" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1644,6 +1655,9 @@
                                                                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                                 <userDefinedRuntimeAttributes>
                                                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="numberTypeSafe" value="YES"/>
+                                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxRange">
+                                                                                                        <integer key="value" value="5"/>
+                                                                                                    </userDefinedRuntimeAttribute>
                                                                                                 </userDefinedRuntimeAttributes>
                                                                                                 <connections>
                                                                                                     <action selector="convertedNumberTextFieldHasChanged:" destination="55x-DT-WWW" eventType="editingChanged" id="qod-mK-ZP9"/>
@@ -1710,6 +1724,9 @@
                                                                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                                 <userDefinedRuntimeAttributes>
                                                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="numberTypeSafe" value="YES"/>
+                                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxRange">
+                                                                                                        <integer key="value" value="5"/>
+                                                                                                    </userDefinedRuntimeAttribute>
                                                                                                 </userDefinedRuntimeAttributes>
                                                                                                 <connections>
                                                                                                     <action selector="originalNumberTextFieldHasChanged:" destination="55x-DT-WWW" eventType="editingChanged" id="xqD-Ev-rYC"/>
