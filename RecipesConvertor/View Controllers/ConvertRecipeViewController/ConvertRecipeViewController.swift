@@ -64,7 +64,6 @@ class ConvertRecipeViewController: BaseViewController {
         self.slider.setThumbImage(UIImage(named: "slider"), for: .focused)
         self.slider.setThumbImage(UIImage(named: "slider"), for: .highlighted)
         self.slider.setThumbImage(UIImage(named: "slider"), for: .selected)
-        self.convertedNumberTextField.isEnabled = false
         self.changeGlassButton.isHidden = !(self.ingredients.contains{ $0.isConvetable() } && SessionManager.shared.isConvertionEnabled ?? false)
         if let numOfOutcomes = self.recipe?.numOfOutcomes {
             self.numOfOutcomes = numOfOutcomes
@@ -78,6 +77,7 @@ class ConvertRecipeViewController: BaseViewController {
             self.tableView.alpha = 0.3
             self.hintView.isHidden = false
         }
+        self.convertedNumberTextField.isEnabled = self.recipe?.numOfOutcomes != nil
         self.sliderBackgroundView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width / 2, height: self.view.frame.height)
         self.view.addSubview(self.sliderBackgroundView)
         self.view.sendSubviewToBack(self.sliderBackgroundView)
