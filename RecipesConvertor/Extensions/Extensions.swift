@@ -45,7 +45,7 @@ extension Double {
     }
     
     func roundToNearestHalf() -> Double {
-        self.round(nearest: 0.5)
+        return self >= 0.5 ? self.floor(nearest: 0.5) : (self == 0 ? self : 0.5)
     }
     
     func roundedClosest() -> Double {

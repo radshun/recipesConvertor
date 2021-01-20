@@ -98,7 +98,7 @@ class ConvertRecipeViewController: BaseViewController {
     @IBAction func sliderValueHasChanged(_ sender: UISlider) {
         let number = Decimal(number: Double(sender.value))
         let numberToHalf = number.asFractionNearestHalf()
-        self.convertedNumberTextField.attributedText = sender.value != 0 ? numberToHalf.asAttributedString() : NSAttributedString(string: "0")
+        self.convertedNumberTextField.attributedText = sender.value != 0 && numberToHalf.asDecimal().number >= 0.5 ? numberToHalf.asAttributedString() : NSAttributedString(string: "0")
         self.sliderWasDragged(sender)
         
         let multiplier = Double(self.slider.value).roundToNearestHalf() / (Double(self.originalNumberTextField.text ?? "") ?? 1).roundToNearestHalf()
