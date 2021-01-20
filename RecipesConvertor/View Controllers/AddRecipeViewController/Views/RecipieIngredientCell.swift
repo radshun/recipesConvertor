@@ -253,14 +253,14 @@ extension RecipieIngredientCell {
         guard let indexPath = self.indexPath, let ingredient = self.ingredient else { return }
         self.delegate?.valueHasChanged(at: indexPath, with: ingredient)
         
-        var sectionToCheck = Set<IngredientDropDownType>()
+        var sectionToCheck: Set<IngredientDropDownType>?
         if allSections {
             sectionToCheck = Set(IngredientDropDownType.allCases)
         } else {
             sectionToCheck = self.touchedSections
         }
         
-        sectionToCheck.forEach {
+        sectionToCheck?.forEach {
             switch $0 {
             case .amout:
 //                self.ingredient?.ingredient.amount?.isValid() ?? false ? self.amountTextField.removeError() : self.amountTextField.setError()
