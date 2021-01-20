@@ -40,6 +40,7 @@ extension Double {
         case third
         case fourth
         case fifth
+        case sixth
         case eight
     }
     
@@ -70,6 +71,8 @@ extension Double {
             return self.round(nearest: 0.25)
         case .fifth:
             return self.round(nearest: 0.2)
+        case .sixth:
+            return self.round(nearest: 0.1666666666666666666666666666666666666666)
         case .eight:
             return self.round(nearest: 0.125)
         }

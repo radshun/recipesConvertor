@@ -19,6 +19,10 @@ enum ConvertionType {
             return UnitType.mililiter.description(for: amount)
         }
     }
+    
+    func description(for decimal: Decimal? = nil) -> String {
+        self.description(for: decimal?.number)
+    }
 }
 
 class ConvertedCell: UITableViewCell {
@@ -63,15 +67,15 @@ class ConvertedCell: UITableViewCell {
         }
         
         self.productNameLabel.text = ingredient.name
-        self.beforeUnitLabel.text = ingredient.unit?.description(for: ingredient.amount?.decimal.number)
-        self.beforeAmountLabel.attributedText = ingredient.amount?.fraction.asAttributedString()
+        self.beforeUnitLabel.text = ingredient.unit?.description(for: ingredient.amount?.decimal)
+        self.beforeAmountLabel.attributedText = ingredient.amount?.fraction.asBest().asAttributedString()
         let multiplied = ingredient.amount?.multiple(by: multiplier)
-        self.afterUnitLabel.text = ingredient.unit?.description(for: multiplied?.asDecimal().number)
-        self.afterAmountLabel.attributedText = multiplier <= 0 ? NSAttributedString(string: "0") : multiplied?.asAttributedString()
+        self.afterUnitLabel.text = ingredient.unit?.description(for: multiplied?.asDecimal())
+        self.afterAmountLabel.attributedText = multiplier <= 0 ? NSAttributedString(string: "0") : multiplied?.asBest().asAttributedString()
         self.flipButtonView.isHidden = !(ingredient.isConvetable() && SessionManager.shared.isConvertionEnabled ?? false)
         
         self.flippedProductNameLabel.text = ingredient.name
-        self.flippedBeforeUnitLabel.text = ingredient.unit?.description(for: multiplied?.asDecimal().number)
+        self.flippedBeforeUnitLabel.text = ingredient.unit?.description(for: multiplied?.asDecimal())
         self.flippedBeforeAmountLabel.attributedText = self.afterAmountLabel.attributedText
         if let ratio = convertable?.ratio {
             let flippedMultiplied = convertionType == .glass ? ingredient.unit?.convertGlassRatio(from: ratio) : ingredient.unit?.convertMililiterRatio(from: ratio)
@@ -80,7 +84,7 @@ class ConvertedCell: UITableViewCell {
             let flippedConvertedAmountFraction = Decimal(number: flippedConvertedAmount).asFractionBest()
             self.flippedAfterAmountLabel.attributedText = flippedConvertedAmountFraction.isZero() ? NSAttributedString(string: "0") : flippedConvertedAmountFraction.asAttributedString()
         } else {
-            self.flippedAfterUnitLabel.text = ingredient.unit?.description(for: multiplied?.asDecimal().number)
+            self.flippedAfterUnitLabel.text = ingredient.unit?.description(for: multiplied?.asDecimal())
         }
         self.flippedDisclaimerLabel.text = "*המידות מחושבות לפי כוס של \(SessionManager.shared.glassType.rawValue) מיליליטר\n**תיתכן סטייה קלה במידות"
     }

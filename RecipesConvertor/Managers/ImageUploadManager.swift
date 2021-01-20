@@ -28,7 +28,7 @@ class ImageUploadManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
         AVCaptureDevice.requestAccess(for: AVMediaType.video) { accessGranted in
             DispatchQueue.main.async {
                 if !accessGranted {
-                    (UIApplication.topViewController() as? BaseViewController)?.displayAlert(with: "אין הרשאה", message: "יש לאשר את ההרשאות למצלמה", okayTitle: "הגדרות", completion: { isSettings in
+                    (UIApplication.topViewController() as? BaseViewController)?.displayAlert(with: "אין הרשאה", message: "בכדי לצלם תמונה יש לאשר את ההרשאות למצלמה", okayTitle: "הגדרות", completion: { isSettings in
                         if isSettings {
                             DispatchQueue.main.async {
                                 guard let settingsUrl = URL(string: UIApplication.openSettingsURLString),

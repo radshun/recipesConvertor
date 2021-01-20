@@ -61,6 +61,15 @@ struct Fraction: Codable {
     func isZero() -> Bool {
         (value ?? 0 <= 0 || value == nil) && (topValue ?? 0 <= 0 || topValue == nil)
     }
+    
+    func asBest() -> Fraction {
+        let number = self.asDecimal().number
+        if number > 10 {
+            return Fraction(value: value, topValue: nil, bottomValue: nil)
+        } else {
+            return self
+        }
+    }
 }
 
 struct Decimal: Codable {

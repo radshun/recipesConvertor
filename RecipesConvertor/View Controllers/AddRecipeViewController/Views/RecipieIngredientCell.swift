@@ -84,11 +84,11 @@ class RecipieIngredientCell: UITableViewCell {
         self.setupDropDown()
         
         self.fractionTopAmountTextField.tintColor = .white
-        self.fractionTopAmountTextField.attributedPlaceholder = NSAttributedString(string: "מונה", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        self.fractionTopAmountTextField.attributedPlaceholder = NSAttributedString(string: "מונה", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.9)])
         self.fractionBottomAmountTextField.tintColor = .white
-        self.fractionBottomAmountTextField.attributedPlaceholder = NSAttributedString(string: "מכנה", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        self.fractionBottomAmountTextField.attributedPlaceholder = NSAttributedString(string: "מכנה", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.9)])
         self.amountNumberTextField.tintColor = .white
-        self.amountNumberTextField.attributedPlaceholder = NSAttributedString(string: "שלם", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        self.amountNumberTextField.attributedPlaceholder = NSAttributedString(string: "שלם", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.9)])
         
         self.productTextField.resignFirstResponder()
         self.productTextField.textColor = .darkBlue

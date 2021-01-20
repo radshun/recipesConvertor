@@ -120,6 +120,10 @@ enum UnitType: Int, Codable ,CaseIterable {
         amount ?? 0 <= 1 ? self.single : self.many
     }
     
+    func description(for decimal: Decimal? = nil) -> String {
+        self.description(for: decimal?.number)
+    }
+    
     func convertGlassRatio(from ratio: Double) -> Double {
         self.isConvertableFromratio ? self.glassMultiplyRatio / ratio : self.glassMultiplyRatio
     }
