@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomUITextField: UITextField {
+class CustomUITextField: BaseUITextField {
     
     var placeHolderColor: UIColor? {
         didSet {
