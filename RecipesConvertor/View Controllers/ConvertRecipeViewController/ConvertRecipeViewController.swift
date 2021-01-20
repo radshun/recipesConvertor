@@ -59,6 +59,7 @@ class ConvertRecipeViewController: BaseViewController {
     func setupUI() {
         self.originalNumberTextField.delegate = self
         self.convertedNumberTextField.delegate = self
+        self.convertedNumberTextField.addTarget(self, action: #selector(convertedNumberEditingDidBegin), for: .editingDidBegin)
         self.tableView.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
         self.slider.setThumbImage(UIImage(named: "slider"), for: .normal)
         self.slider.setThumbImage(UIImage(named: "slider"), for: .focused)
@@ -111,13 +112,11 @@ class ConvertRecipeViewController: BaseViewController {
     }
     
     @IBAction func convertedNumberTextFieldHasChanged(_ sender: UITextField) {
-        
         if sender.text?.contains("\\") ?? false {
-            self.convertedNumberTextField.text = String(sender.text?.split(separator: " ").first ?? "")
+            self.convertedNumberTextField.text = String(sender.text?.split(separator: " ").first ?? "").trimWhiteSpaces()
         }
-                
         let number = Float(self.convertedNumberTextField.text?.trimWhiteSpaces() ?? "0") ?? 0
-        if number > self.slider.maximumValue {
+        if number > self.slider.maximumValue || number > (Float(self.originalNumberTextField.text ?? "") ?? 1000000) * 2 {
             self.slider.maximumValue = number
         }
         self.slider.value = number
@@ -204,7 +203,12 @@ extension ConvertRecipeViewController: UITableViewDataSource, UITableViewDelegat
 //MARK: UITextFieldDelegate
 extension ConvertRecipeViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        (textField as? BaseUITextField)?.handleRange(range, replacementString: string) ?? true
+        return (textField as? BaseUITextField)?.handleRange(range, replacementString: string) ?? true
+    }
+    
+    @objc func convertedNumberEditingDidBegin(_ textField: UITextField) {
+        let text = textField.text?.replacingOccurrences(of: " 1\\2", with: "").trimWhiteSpaces() ?? ""
+        textField.attributedText = NSAttributedString(string: text)
     }
 }
 

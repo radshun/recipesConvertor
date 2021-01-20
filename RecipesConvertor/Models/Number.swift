@@ -43,7 +43,7 @@ struct Fraction: Codable {
     }
     
     func asAttributedString() -> NSMutableAttributedString {
-        NSMutableAttributedString().normal("\(value.isNotZero ? "\(value!)\(self.isValid() ? " " : "")" : "")", fontSize: 18).normal(self.fractionAsString(), fontSize: 16)
+        NSMutableAttributedString().normal("\(value.isNotZero ? "\(value!)\(topValue.isNotZero && bottomValue.isNotZero ? " " : "")" : "")", fontSize: 18).normal(self.fractionAsString(), fontSize: 16)
     }
     
     func isValid() -> Bool {
