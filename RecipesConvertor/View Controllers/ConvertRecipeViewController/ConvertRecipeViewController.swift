@@ -113,7 +113,12 @@ class ConvertRecipeViewController: BaseViewController {
     
     @IBAction func convertedNumberTextFieldHasChanged(_ sender: UITextField) {
         if sender.text?.contains("\\") ?? false {
-            self.convertedNumberTextField.text = String(sender.text?.split(separator: " ").first ?? "").trimWhiteSpaces()
+            let textSplited = sender.text?.split(separator: " ")
+            if textSplited?.count == 1 {
+                self.convertedNumberTextField.text = textSplited?.first?.replacingOccurrences(of: "\\", with: "").trimWhiteSpaces()
+            } else {
+                self.convertedNumberTextField.text = String(sender.text?.split(separator: " ").first ?? "").trimWhiteSpaces()
+            }
         }
         let number = Float(self.convertedNumberTextField.text?.trimWhiteSpaces() ?? "0") ?? 0
         if number > self.slider.maximumValue || number > (Float(self.originalNumberTextField.text ?? "") ?? 1000000) * 2 {
