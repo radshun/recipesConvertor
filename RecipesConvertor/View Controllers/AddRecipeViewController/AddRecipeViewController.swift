@@ -26,8 +26,6 @@ class AddRecipeViewController: BaseViewController {
         super.viewDidLoad()
         
         self.ingredients = self.recipe?.ingredients.map{ IngredientCellModel(ingredient: $0) } ?? [IngredientCellModel()]
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         self.setupUI()
         self.fetchGeneralDetails()
     }
@@ -54,6 +52,7 @@ class AddRecipeViewController: BaseViewController {
     }
 }
 
+//MARK: UITableViewDataSource + UITableViewDelegate
 extension AddRecipeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ingredients.count
@@ -72,6 +71,7 @@ extension AddRecipeViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+//MARK: Validation + Navigation
 extension AddRecipeViewController {
     
     private func goToNextScreen() {
@@ -146,17 +146,7 @@ extension AddRecipeViewController {
     }
 }
 
-extension AddRecipeViewController {
-    @objc private func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
-        }
-    }
-    @objc private func keyboardWillHide(notification: NSNotification) {
-        self.tableView.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
-    }
-}
-
+//MARK: RecipieIngredientCellDelegate
 extension AddRecipeViewController: RecipieIngredientCellDelegate {
     func reloadItem(at indexPath: IndexPath, with ingredient: IngredientCellModel) {
         self.ingredients[indexPath.row] = ingredient

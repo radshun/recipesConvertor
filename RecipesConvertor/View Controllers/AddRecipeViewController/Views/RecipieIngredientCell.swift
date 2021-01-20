@@ -147,7 +147,6 @@ class RecipieIngredientCell: UITableViewCell {
             self.unitsTopImageView.isHidden = true
             self.changableView.isHidden = false
             self.changableViewHeight.constant = 120
-            self.productTextField.resignFirstResponder()
         case .units:
             self.amountView.isHidden = true
             self.amountTopImageView.isHidden = true
@@ -156,7 +155,6 @@ class RecipieIngredientCell: UITableViewCell {
             self.changableView.isHidden = false
             self.layoutIfNeeded()
             self.changableViewHeight.constant = self.collectionView.contentSize.height + 16
-            self.productTextField.resignFirstResponder()
         case .none:
             self.amountView.isHidden = true
             self.amountTopImageView.isHidden = true
@@ -164,7 +162,6 @@ class RecipieIngredientCell: UITableViewCell {
             self.unitsTopImageView.isHidden = true
             self.changableView.isHidden = true
             self.changableViewHeight.constant = 0
-            self.productTextField.becomeFirstResponder()
         }
         self.layoutIfNeeded()
     }

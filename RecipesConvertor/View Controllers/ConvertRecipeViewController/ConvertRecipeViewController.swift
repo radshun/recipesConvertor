@@ -183,6 +183,7 @@ class ConvertRecipeViewController: BaseViewController {
     }
 }
 
+//MARK: UITableViewDataSource + UITableViewDelegate
 extension ConvertRecipeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ingredients.count
@@ -198,6 +199,7 @@ extension ConvertRecipeViewController: UITableViewDataSource, UITableViewDelegat
     }
 }
 
+//MARK: Keyboard Handling
 extension ConvertRecipeViewController {
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {

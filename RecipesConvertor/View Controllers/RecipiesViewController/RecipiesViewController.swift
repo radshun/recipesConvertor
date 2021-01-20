@@ -76,6 +76,7 @@ class RecipiesViewController: BaseViewController {
     }
 }
 
+//MARK: UITableViewDataSource + UITableViewDelegate
 extension RecipiesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return recipies.count
