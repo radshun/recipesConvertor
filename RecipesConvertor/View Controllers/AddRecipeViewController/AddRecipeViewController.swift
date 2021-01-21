@@ -174,6 +174,7 @@ extension AddRecipeViewController: RecipieIngredientCellDelegate {
     func deleteItem(at indexPath: IndexPath) {
         self.ingredients.remove(at: indexPath.row)
         self.tableView.reloadData()
+        self.isDataValid(completion: {_ in})
     }
     
     private func hideAllDropDowns() {
