@@ -58,7 +58,7 @@ class AddRecipeDetailsViewController: BaseViewController {
     
     @objc func recipeNameWasChanged(_ sender: UITextField) {
         self.name = sender.text
-        self.recipeBottomView.backgroundColor = sender.text?.isEmpty ?? true ? .errorRed : .white
+        self.recipeBottomView.backgroundColor = sender.text?.trimWhiteSpaces().isEmpty ?? true ? .errorRed : .white
     }
     
     @IBAction func onAddGaleryImage(_ sender: UIButton) {
