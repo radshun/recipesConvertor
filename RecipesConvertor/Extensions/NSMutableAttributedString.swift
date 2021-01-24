@@ -100,3 +100,9 @@ extension NSMutableAttributedString {
         return self
     }
 }
+
+extension NSAttributedString {
+    static func attributedPlaceholder(name: String, color: UIColor) -> NSAttributedString {
+        NSAttributedString(string: name, attributes: [NSAttributedString.Key.foregroundColor: color])
+    }
+}
